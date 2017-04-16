@@ -23,7 +23,7 @@ namespace Sim
 		}
 		public static void Show()
 		{
-			_b = BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.hue);
+			_b = BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.FKNV);
 
 			GameView.DrawEvent += OnDraw;
 		}
