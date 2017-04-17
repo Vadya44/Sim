@@ -9,6 +9,11 @@ namespace Sim
 {
 	public class GameView : View
 	{
+		public float mainWidth = 720;
+		public float mainHidth = 1280;
+		public static float CenterX;
+		public static float CenterY;
+		public float Factor;
 		//int _px;
 		//private Circle _circle;
 		public static GameView Instance { get; private set; }
@@ -17,9 +22,10 @@ namespace Sim
 		public GameView(Context context, IAttributeSet attrs) : base(context, attrs)
 		{
 			Instance = this;
-
-
-
+			CenterX = Width / 2;
+			CenterY = Height / 2;
+			Factor = ((Width / mainHidth) > (Height / mainHidth)) ?
+				Height / mainHidth : Width / mainWidth;
 			//Initialize();
 		}
 		//private void Initialize()

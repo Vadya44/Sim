@@ -65,6 +65,7 @@
     <Compile Include="Scenes\Result_Solo.cs" />
     <Compile Include="Scenes\Rules.cs" />
     <Compile Include="GameView.cs" />
+    <Compile Include="SceneSwitch.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
