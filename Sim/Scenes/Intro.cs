@@ -8,22 +8,39 @@ using Android.Content.PM;
 using Android.Content;
 using Android.Graphics.Drawables.Shapes;
 using System.IO;
+using System.Threading;
+using System.Timers;
 namespace Sim
 {
 	public static class Intro
 	{
-		static Bitmap _b;
+        public static System.Timers.Timer aTimer = new System.Timers.Timer();
+        static Bitmap _b;
+        static Bitmap _bb;
 		public static void OnDraw(Canvas canvas)
 		{
-			canvas.DrawBitmap(_b, 10, 10, null);
+            canvas.DrawColor(Color.White);
+			canvas.DrawBitmap(_bb,  0, 
+                (int)(GameView.mainHidth * 0.2 *GameView.Factor), null);
 		}
 		public static void Show()
 		{
-			_b = BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.FKNV);
 
-			GameView.DrawEvent += OnDraw;
-		}
-		public static void Hide()
+            _b = BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.FKNV);
+            _bb = Bitmap.CreateScaledBitmap(_b, (int)(GameView.mainWidth * GameView.Factor),
+            (int)(0.6 * GameView.mainHidth * GameView.Factor), false);
+            GameView.DrawEvent += OnDraw;
+            aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            aTimer.Interval = 4000;
+            aTimer.Enabled = true;
+        }
+        private static void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            aTimer.Enabled = false;
+            Hide();
+            MainMenu.Show();
+        }
+        public static void Hide()
 		{
 			GameView.DrawEvent -= OnDraw;
 		}
