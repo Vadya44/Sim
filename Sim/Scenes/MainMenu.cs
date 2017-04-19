@@ -13,8 +13,10 @@ namespace Sim
             Paints.DrawText(canvas, 200, 730, "Training", 90, 60);
             Paints.DrawButton(canvas, 20, 20, 280, 130);
             Paints.DrawButton(canvas, 440, 20, 700, 130);
-            Paints.DrawText(canvas, 140, 55, "Account", 80, 50);
-        
+            Paints.DrawText(canvas, 40, 90, "Account", 60, 40);
+            Paints.DrawText(canvas, 500, 95, "Top", 80, 50);
+            Paints.DrawButton(canvas, 235, 1000, 485, 1150);
+            Paints.DrawText(canvas, 250, 1100, "Rules", 90, 60);
         }
         public static void Show()
         {

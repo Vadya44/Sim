@@ -31,7 +31,7 @@ namespace Sim
             (int)(0.6 * GameView.mainHidth * GameView.Factor), false);
             GameView.DrawEvent += OnDraw;
             aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
-            aTimer.Interval = 4000;
+            aTimer.Interval = 1000;
             aTimer.Enabled = true;
         }
         private static void OnTimedEvent(object source, ElapsedEventArgs e)
