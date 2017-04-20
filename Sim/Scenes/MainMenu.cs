@@ -17,6 +17,8 @@ namespace Sim
             Paints.DrawText(canvas, 500, 95, "Top", 80, 50);
             Paints.DrawButton(canvas, 235, 1000, 485, 1150);
             Paints.DrawText(canvas, 250, 1100, "Rules", 90, 60);
+            Hide();
+            Result_Ranked.Show();
         }
         public static void Show()
         {

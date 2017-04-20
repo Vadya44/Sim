@@ -55,30 +55,33 @@ namespace Sim
 		public static void DrawRes(Canvas canvas, bool isWin)
 		{
 			canvas.DrawColor(background.Color);
-			canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
-			                    30, 30, resultWin);
-			canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
-					30, 30, Circ);
-			text.StrokeWidth = 100 * F;
-			text.TextSize = 75 * F;
-			canvas.DrawText("You", 250 * F, 250 * F, Paints.text);
+			//canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
+					//120, 120, Circ);
+			text.StrokeWidth = 250 * F;
+			text.TextSize = 175 * F;
 			if (isWin)
 			{
-				canvas.DrawText("Win", 250 * F, 400 * F, Paints.text);
-				canvas.DrawRoundRect(200 * GameView.Factor, 600 * GameView.Factor,
-				 520 * GameView.Factor, 720 * GameView.Factor,
-					5, 5, Paints.resultWin);
+                canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
+                    180, 180, resultWin);
+                canvas.DrawText("Win", 220 * F, 455 * F, Paints.text);
+                canvas.DrawText("You", 230 * F, 250 * F, Paints.text);
+                canvas.DrawRoundRect(150 * GameView.Factor, 600 * GameView.Factor,
+				 570 * GameView.Factor, 720 * GameView.Factor,
+					120, 120, Paints.resultWin);
 			}
 			else 
 			{
-				canvas.DrawText("Lose", 250 * F, 400 * F, Paints.text);
-				canvas.DrawRoundRect(200 * GameView.Factor, 600 * GameView.Factor,
-				 520 * GameView.Factor, 720 * GameView.Factor,
-					5, 5, Paints.resultLose);
+                canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
+                    180, 180, resultLose);
+                canvas.DrawText("Lose", 190 * F, 455 * F, Paints.text);
+                canvas.DrawText("You", 230 * F, 250 * F, Paints.text);
+                canvas.DrawRoundRect(150 * GameView.Factor, 600 * GameView.Factor,
+				 570 * GameView.Factor, 720 * GameView.Factor,
+					120, 120, Paints.resultLose);
 			}
-			canvas.DrawRoundRect(200 * GameView.Factor, 600 * GameView.Factor,
-					520 * GameView.Factor, 720 * GameView.Factor,
-						5, 5, Paints.Circ);
+			//canvas.DrawRoundRect(200 * GameView.Factor, 600 * GameView.Factor,
+					//520 * GameView.Factor, 720 * GameView.Factor,
+					//	5, 5, Paints.Circ);
 		}
 	}
 }

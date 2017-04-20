@@ -2,23 +2,23 @@
 using Android.Graphics;
 namespace Sim
 {
-	public class Result_Ranked
+	public static class Result_Ranked
 	{
 		static void OnDraw(Canvas canvas)
 		{
 			Paints.DrawRes(canvas, true);
-			Paints.DrawButton(canvas, 235, 1000, 485, 1150);
-			Paints.DrawText(canvas, 250, 1100, "Main menu", 90, 60);
-			Paints.DrawButton(canvas, 235, 800, 485, 950);
-			Paints.DrawText(canvas, 250, 900, "New game", 90, 60);
-			Paints.DrawText(canvas, 380, 650, "CHANGE", 60, 40);
-			Paints.DrawText(canvas, 380, 690, "NEW RANK", 60, 40);
+			Paints.DrawButton(canvas, 135, 1000, 585, 1150);
+			Paints.DrawText(canvas, 138, 1100, "Main menu", 90, 60);
+			Paints.DrawButton(canvas, 135, 800, 585, 950);
+			Paints.DrawText(canvas, 148, 900, "New game", 90, 60);
+			Paints.DrawText(canvas, 270, 650, "CHANGE", 40, 20);
+			Paints.DrawText(canvas, 270, 700, "NEW RANK", 40, 20);
 		}
-		static void Show()
+		public static void Show()
 		{
 			GameView.DrawEvent += OnDraw;
 		}
-		static void Hide()
+		public static void Hide()
 		{
 			GameView.DrawEvent -= OnDraw;
 		}
