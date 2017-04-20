@@ -12,19 +12,19 @@ using System.Threading;
 using System.Timers;
 namespace Sim
 {
-	public static class Intro
-	{
+    public static class Intro
+    {
         public static System.Timers.Timer aTimer = new System.Timers.Timer();
         static Bitmap _b;
         static Bitmap _bb;
-		public static void OnDraw(Canvas canvas)
-		{
+        public static void OnDraw(Canvas canvas)
+        {
             canvas.DrawColor(Color.White);
-			canvas.DrawBitmap(_bb,  0, 
-                (int)(GameView.mainHidth * 0.2 *GameView.Factor), null);
-		}
-		public static void Show()
-		{
+            canvas.DrawBitmap(_bb, 0,
+                (int)(GameView.mainHidth * 0.2 * GameView.Factor), null);
+        }
+        public static void Show()
+        {
 
             _b = BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.FKNV);
             _bb = Bitmap.CreateScaledBitmap(_b, (int)(GameView.mainWidth * GameView.Factor),
@@ -41,8 +41,8 @@ namespace Sim
             MainMenu.Show();
         }
         public static void Hide()
-		{
-			GameView.DrawEvent -= OnDraw;
-		}
-	}
+        {
+            GameView.DrawEvent -= OnDraw;
+        }
+    }
 }
