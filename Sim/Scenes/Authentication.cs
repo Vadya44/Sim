@@ -2,17 +2,18 @@
 using Android.Graphics;
 namespace Sim
 {
-	public class Authentication
+	public static class Authentication
 	{
-		static void OnDraw(Canvas canvas)
+		// With clicks
+		public static void OnDraw(Canvas canvas)
 		{
 
 		}
-		static void Show()
+		public static void Show()
 		{
 			GameView.DrawEvent += OnDraw;
 		}
-		static void Hide()
+		public static void Hide()
 		{
 			GameView.DrawEvent -= OnDraw;
 		}

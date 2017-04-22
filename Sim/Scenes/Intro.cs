@@ -14,6 +14,7 @@ namespace Sim
 {
     public static class Intro
     {
+		// No clicks
         public static System.Timers.Timer aTimer = new System.Timers.Timer();
         static Bitmap _b;
         static Bitmap _bb;

@@ -4,6 +4,7 @@ namespace Sim
 {
     public class MainMenu
     {
+		// With clicks
         public static void OnDraw(Canvas canvas)
         {
             canvas.DrawColor(Paints.background.Color);

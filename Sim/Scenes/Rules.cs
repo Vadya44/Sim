@@ -5,20 +5,20 @@ using Android.Util;
 using Android.Views;
 namespace Sim
 {
-	public class Rules
-
+	public static class Rules
+	// With clicks
 	{
 		
-		static void OnDraw(Canvas canvas)
+		public static void OnDraw(Canvas canvas)
 		{
 			
 		}
-		static void Show()
+		public static void Show()
 		{
 			
 			GameView.DrawEvent += OnDraw;
 		}
-		static void Hide()
+		public static void Hide()
 		{
 			GameView.DrawEvent -= OnDraw;
 		}

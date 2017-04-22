@@ -4,6 +4,7 @@ namespace Sim
 {
     public static class Result_Ranked
     {
+		// With clicks
         static void OnDraw(Canvas canvas)
         {
             Paints.DrawRes(canvas, true);

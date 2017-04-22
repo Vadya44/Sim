@@ -2,17 +2,22 @@
 using Android.Graphics;
 namespace Sim
 {
-	public class Result_Solo
+	public static class Result_Solo
 	{
-		static void OnDraw(Canvas canvas)
+		// With clicks
+		public static void OnDraw(Canvas canvas)
 		{
-
+			Paints.DrawRes(canvas, true);
+			Paints.DrawButton(canvas, 135, 1000, 585, 1150);
+			Paints.DrawText(canvas, 138, 1100, "Main menu", 90, 60);
+			Paints.DrawButton(canvas, 135, 800, 585, 950);
+			Paints.DrawText(canvas, 148, 900, "New game", 90, 60);
 		}
-		static void Show()
+		public static void Show()
 		{
 			GameView.DrawEvent += OnDraw;
 		}
-		static void Hide()
+		public static void Hide()
 		{
 			GameView.DrawEvent -= OnDraw;
 		}
