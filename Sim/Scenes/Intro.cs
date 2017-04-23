@@ -12,7 +12,7 @@ using System.Threading;
 using System.Timers;
 namespace Sim
 {
-    public static class Intro
+    public class Intro
     {
 		// No clicks
         public static System.Timers.Timer aTimer = new System.Timers.Timer();
