@@ -24,6 +24,7 @@ namespace Sim
         }
         public static void Show()
         {
+            GameView.activeScene = "MainMenu";
             GameView.DrawEvent += OnDraw;
         }
         public static void Hide()

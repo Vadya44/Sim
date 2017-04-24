@@ -26,7 +26,7 @@ namespace Sim
         }
         public static void Show()
         {
-
+            GameView.activeScene = "Intro";
             _b = BitmapFactory.DecodeResource(Application.Context.Resources, Resource.Drawable.FKNV);
             _bb = Bitmap.CreateScaledBitmap(_b, (int)(GameView.mainWidth * GameView.Factor),
             (int)(0.6 * GameView.mainHidth * GameView.Factor), false);

@@ -11,6 +11,7 @@ namespace Sim
 		}
 		public static void Show()
 		{
+            GameView.activeScene = "LeaderBoard";
 			GameView.DrawEvent += OnDraw;
 		}
 		public static void Hide()

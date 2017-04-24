@@ -67,6 +67,7 @@
     <Compile Include="GameView.cs" />
     <Compile Include="SceneSwitch.cs" />
     <Compile Include="Paints.cs" />
+    <Compile Include="TouchHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -10,6 +10,7 @@ namespace Sim
 		}
 		public static void Show()
 		{
+            GameView.activeScene = "Ranked_No_Connection";
 			GameView.DrawEvent += OnDraw;
 		}
 		public static void Hide()

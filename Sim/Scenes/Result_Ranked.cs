@@ -17,6 +17,7 @@ namespace Sim
         }
         public static void Show()
         {
+            GameView.activeScene = "Result_Ranked";
             GameView.DrawEvent += OnDraw;
         }
         public static void Hide()

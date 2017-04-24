@@ -11,6 +11,7 @@ namespace Sim
 		}
 		public static void Show()
 		{
+            GameView.activeScene = "Game_Solo";
 			GameView.DrawEvent += OnDraw;
 		}
 		public static void Hide()

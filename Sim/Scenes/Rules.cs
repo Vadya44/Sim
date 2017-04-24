@@ -15,7 +15,7 @@ namespace Sim
 		}
 		public static void Show()
 		{
-			
+            GameView.activeScene = "Rules";
 			GameView.DrawEvent += OnDraw;
 		}
 		public static void Hide()
