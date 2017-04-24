@@ -68,15 +68,14 @@ namespace Sim
             _scaleDetector.OnTouchEvent(ev);
             MotionEventActions action = ev.Action & MotionEventActions.Mask;
             int pointerIndex;
-            if (ev.PointerCount > 1) return false;
+            //if (ev.PointerCount > 1) return false;
             switch (action)
             {
                 case MotionEventActions.Down:
                     _lastTouchX = ev.GetX();
                     _lastTouchY = ev.GetY();
                     _activePointerId = ev.GetPointerId(0);
-                    MainMenu.Hide();
-                    Result_Ranked.Show();
+                    TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
                     break;
                 case MotionEventActions.Move:
                     pointerIndex = ev.FindPointerIndex(_activePointerId);
@@ -93,8 +92,8 @@ namespace Sim
                     }
                     _lastTouchX = x;
                     _lastTouchY = y;
-                    MainMenu.Hide();
-                    Result_Ranked.Show();
+                    TouchHandler.MovedTouch(_lastTouchX / Factor, _lastTouchY / Factor,
+                        _posX / Factor, _posY / Factor);
                     break;
                 case MotionEventActions.Up:
                 case MotionEventActions.Cancel:

@@ -18,5 +18,13 @@ namespace Sim
 		{
 			GameView.DrawEvent -= OnDraw;
 		}
-	}
+        public static void JustTouch(float x, float y)
+        {
+
+        }
+        public static void MovedTouch(float x1, float y1, float x2, float y2)
+        {
+
+        }
+    }
 }
