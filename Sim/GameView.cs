@@ -33,7 +33,7 @@ namespace Sim
         }
 		public GameView(Context context, IAttributeSet attrs) : base(context, attrs)
 		{
-            _scaleDetector = new ScaleGestureDetector(context, new MyScaleListener(this));
+            //_scaleDetector = new ScaleGestureDetector(context, new MyScaleListener(this));
             Instance = this;
             //Initialize();
         }
@@ -57,7 +57,6 @@ namespace Sim
 
 
         private static readonly int InvalidPointerId = -1;
-        private readonly ScaleGestureDetector _scaleDetector;
         private int _activePointerId = InvalidPointerId;
         private float _lastTouchX;
         private float _lastTouchY;
@@ -65,37 +64,27 @@ namespace Sim
         private float _posY;
         public override bool OnTouchEvent(MotionEvent ev)
         {
-            _scaleDetector.OnTouchEvent(ev);
             MotionEventActions action = ev.Action & MotionEventActions.Mask;
             int pointerIndex;
-            //if (ev.PointerCount > 1) return false;
+            if (ev.PointerCount > 1) return false;
             switch (action)
             {
                 case MotionEventActions.Down:
                     _lastTouchX = ev.GetX();
                     _lastTouchY = ev.GetY();
                     _activePointerId = ev.GetPointerId(0);
-                    TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
+                    //TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
                     break;
-                case MotionEventActions.Move:
+                case MotionEventActions.Move:   // ДОДЕЛАТЬ
                     pointerIndex = ev.FindPointerIndex(_activePointerId);
                     float x = ev.GetX(pointerIndex);
                     float y = ev.GetY(pointerIndex);
-                    if (!_scaleDetector.IsInProgress)
-                    {
-                        // Only move the ScaleGestureDetector isn't already processing a gesture.
-                        float deltaX = x - _lastTouchX;
-                        float deltaY = y - _lastTouchY;
-                        _posX += deltaX;
-                        _posY += deltaY;
-                        Invalidate();
-                    }
-                    _lastTouchX = x;
-                    _lastTouchY = y;
                     TouchHandler.MovedTouch(_lastTouchX / Factor, _lastTouchY / Factor,
                         _posX / Factor, _posY / Factor);
                     break;
                 case MotionEventActions.Up:
+                    TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
+                    break;
                 case MotionEventActions.Cancel:
                     // This events occur when something cancels the gesture (for example the
                     // activity going in the background) or when the pointer has been lifted up.
