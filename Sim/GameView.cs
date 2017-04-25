@@ -79,12 +79,20 @@ namespace Sim
                     pointerIndex = ev.FindPointerIndex(_activePointerId);
                     float x = ev.GetX(pointerIndex);
                     float y = ev.GetY(pointerIndex);
-                    TouchHandler.MovedTouch(_lastTouchX / Factor, _lastTouchY / Factor,
-                        _posX / Factor, _posY / Factor);
                     break;
                 case MotionEventActions.Up:
-                    TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
-                    break;
+					if (_activePointerId == ev.GetPointerId(0))
+					{
+						TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
+						break;
+					}
+					else if (_activePointerId != InvalidPointerId)
+					{
+						TouchHandler.MovedTouch(_lastTouchX / Factor, _lastTouchY / Factor,
+						_posX / Factor, _posY / Factor);
+						break;
+					}
+					else break;
                 case MotionEventActions.Cancel:
                     // This events occur when something cancels the gesture (for example the
                     // activity going in the background) or when the pointer has been lifted up.
@@ -92,18 +100,6 @@ namespace Sim
                     _activePointerId = InvalidPointerId;
                     break;
             }
-            return true;
-        }
-    }
-     class MyScaleListener : ScaleGestureDetector.SimpleOnScaleGestureListener
-    {
-        private readonly GameView _view;
-        public MyScaleListener(GameView view)
-        {
-            _view = view;
-        }
-        public override bool OnScale(ScaleGestureDetector detector)
-        {
             return true;
         }
     }
