@@ -4,7 +4,7 @@ namespace Sim
 {
     public static class Result_Ranked
     {
-		// With clicks
+        // With clicks
         static void OnDraw(Canvas canvas)
         {
             Paints.DrawRes(canvas, true);
@@ -26,11 +26,31 @@ namespace Sim
         }
         public static void JustTouch(float x, float y)
         {
-
+            if (x > 135 && x < 585 && y > 1000 && y < 1150)
+            {
+                Hide();
+                MainMenu.Show();
+            }
+            if (x > 135 && x < 585 && y > 800 && y < 950)
+            {
+                Hide();
+                //
+            }
         }
         public static void MovedTouch(float x1, float y1, float x2, float y2)
         {
-
+            if (x1 > 135 && x1 < 585 && y1 > 1000 && y1 < 1150 &&
+                x2 > 135 && x2 < 585 && y2 > 1000 && y2 < 1150)
+            {
+                Hide();
+                MainMenu.Show();
+            }
+            if (x1 > 135 && x1 < 585 && y1 > 800 && y1 < 950 &&
+                x2 > 135 && x2 < 585 && y2 > 800 && y2 < 950)
+            {
+                Hide();
+                //
+            }
         }
     }
 }
