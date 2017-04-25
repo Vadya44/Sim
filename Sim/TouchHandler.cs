@@ -28,7 +28,7 @@ namespace Sim
                     Account.JustTouch(x, y);
                     break;
                 case "Game_Ranked":
-                   Game_Ranked.JustTouch(x, y);
+                    Game_Ranked.JustTouch(x, y);
                     break;
                 case "Game_Solo":
                     Game_Solo.JustTouch(x, y);
@@ -91,3 +91,4 @@ namespace Sim
             }
         }
     }
+}
