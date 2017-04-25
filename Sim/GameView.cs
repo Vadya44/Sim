@@ -60,12 +60,14 @@ namespace Sim
         private int _activePointerId = InvalidPointerId;
         private float _lastTouchX;
         private float _lastTouchY;
-        private float _posX;
-        private float _posY;
+        private float _posX = 0;
+        private float _posY = 0;
+        byte isMoved = 0; 
         public override bool OnTouchEvent(MotionEvent ev)
         {
             MotionEventActions action = ev.Action & MotionEventActions.Mask;
-            int pointerIndex;
+            int pointerIndex = 0;
+            
             if (ev.PointerCount > 1) return false;
             switch (action)
             {
@@ -73,30 +75,29 @@ namespace Sim
                     _lastTouchX = ev.GetX();
                     _lastTouchY = ev.GetY();
                     _activePointerId = ev.GetPointerId(0);
-                    //TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
                     break;
-                case MotionEventActions.Move:   // ДОДЕЛАТЬ
+                case MotionEventActions.Move:
+                    isMoved = 1;
                     pointerIndex = ev.FindPointerIndex(_activePointerId);
-                    float x = ev.GetX(pointerIndex);
-                    float y = ev.GetY(pointerIndex);
+                    _posX = ev.GetX(pointerIndex);
+                    _posY = ev.GetY(pointerIndex);
+                    
                     break;
                 case MotionEventActions.Up:
-					if (_activePointerId == ev.GetPointerId(0))
-					{
-						TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
-						break;
-					}
-					else if (_activePointerId != InvalidPointerId)
-					{
-						TouchHandler.MovedTouch(_lastTouchX / Factor, _lastTouchY / Factor,
-						_posX / Factor, _posY / Factor);
-						break;
-					}
-					else break;
+                    if (isMoved == 0)
+                    {
+                        TouchHandler.JustTouch(_lastTouchX / Factor, _lastTouchY / Factor);
+                        break;
+                    }
+                    else
+                    {
+                        TouchHandler.MovedTouch(_lastTouchX / Factor, _lastTouchY / Factor,
+                        ev.GetX(pointerIndex) / Factor, ev.GetY(pointerIndex) / Factor);
+                        isMoved = 0;
+                        break;
+                        
+                    }
                 case MotionEventActions.Cancel:
-                    // This events occur when something cancels the gesture (for example the
-                    // activity going in the background) or when the pointer has been lifted up.
-                    // We no longer need to keep track of the active pointer.
                     _activePointerId = InvalidPointerId;
                     break;
             }

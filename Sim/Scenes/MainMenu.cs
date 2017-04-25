@@ -68,30 +68,35 @@ namespace Sim
                 Hide();
                 Game_Ranked.Show();
             }
+            else
             if (x1 > 180 && x1 < 540 && y1 > 600 && y1 < 800 &&
                 x2 > 180 && x2 < 540 && y2 > 600 && y2 < 800)
             {
                 Hide();
                 Game_Solo.Show();
             }
+            else
             if (x1 > 20 && x1 < 280 && y1 > 20 && y1 < 130 &&
                 x2 > 20 && x2 < 280 && y2 > 20 && y2 < 130)
             {
                 Hide();
                 Account.Show();
             }
+            else
             if (x1 > 440 && x1 < 700 && y1 > 20 && y1 < 130 &&
                 x2 > 440 && x2 < 700 && y2 > 20 && y2 < 130)
             {
                 Hide();
                 LeaderBoard.Show();
             }
+            else
             if (x1 > 235 && x1 < 485 && y1 > 1000 && y1 < 1150 &&
                 x2 > 235 && x2 < 485 && y2 > 1000 && y2 < 1150)
             {
                 Hide();
                 Rules.Show();
             }
+            else return;
         }
         }
 }
