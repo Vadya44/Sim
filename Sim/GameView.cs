@@ -17,8 +17,6 @@ namespace Sim
 		public static float CenterX;
 		public static float CenterY;
 		public static float Factor = 1;
-		//int _px;
-		//private Circle _circle;
 		public static GameView Instance { get; private set; }
 		public delegate void DrawDelegate(Canvas canvas);
 		public static event DrawDelegate DrawEvent;
@@ -39,9 +37,6 @@ namespace Sim
         }
 		//private void Initialize()
 		//{
-		//var metrics = Resources.DisplayMetrics;
-		//_circle = new Circle(metrics.WidthPixels, metrics.HeightPixels);
-		//_px = Resources.DisplayMetrics.WidthPixels;
 		//}
 		protected override void OnDraw(Canvas canvas)
 		{
