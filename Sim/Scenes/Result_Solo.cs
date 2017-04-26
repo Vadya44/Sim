@@ -7,7 +7,7 @@ namespace Sim
 		// With clicks
 		public static void OnDraw(Canvas canvas)
 		{
-			Paints.DrawRes(canvas, true);
+			Paints.DrawRes(canvas, false);
 			Paints.DrawButton(canvas, 135, 1000, 585, 1150);
 			Paints.DrawText(canvas, 138, 1100, "Main menu", 90, 60);
 			Paints.DrawButton(canvas, 135, 800, 585, 950);
@@ -32,7 +32,7 @@ namespace Sim
             if (x > 135 && x < 585 && y > 800 && y < 950)
             {
                 Hide();
-                //
+                Game_Solo.Show();
             }
         }
         public static void MovedTouch(float x1, float y1, float x2, float y2)
@@ -47,7 +47,7 @@ namespace Sim
                 x2 > 135 && x2 < 585 && y2 > 800 && y2 < 950)
             {
                 Hide();
-                //
+                Game_Solo.Show();
             }
         }
     }

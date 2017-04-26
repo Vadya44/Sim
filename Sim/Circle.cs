@@ -44,7 +44,7 @@ namespace Sim
 		{
 			get
 			{
-				int res = 360 - (int)(720 * 0.075);
+				int res = 360 - (int)(720 * 0.06);
 				return res;
 			}
 		}
@@ -57,7 +57,7 @@ namespace Sim
 			p.Color = new Color(228, 253, 225);
 			p.StrokeWidth = 2;
 			canvas.DrawCircle(_x * GameView.Factor,
-			                  _y *GameView.Factor, Radius, p);
+			                  _y *GameView.Factor, Radius * GameView.Factor, p);
 		}
 	}
 }

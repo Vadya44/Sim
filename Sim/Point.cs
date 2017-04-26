@@ -71,5 +71,6 @@ namespace Sim
 			                  GameView.Factor * _y,
 			                  720/50 * GameView.Factor, p);
 		}
+
 	}
 }

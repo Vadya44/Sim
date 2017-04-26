@@ -53,30 +53,38 @@ namespace Sim
 			}
 			return _arr;
 		}
-		public static void DrawPoints(int numb, Canvas canvas,Circle circle)
+        public static void DrawPoints(Point[] arr, Canvas canvas,Circle circle)
 		{
-			var arr = Methods.CreatePoints(numb, circle, 720);
+		
 			for (int i = 0; i < arr.Length; i++)
 			{
 				arr[i].Draw(canvas);
 			}
 		}
-		public static void DrawLine(int x, int y, Canvas canvas)
+		public static Line DrawLine(float x1, float y1, float x2,
+            float y2, Point[] arr)
 		{
-			if (Validate(x, y))
-			{
-				Paint p = new Paint();
-				p.StrokeWidth = 8;
-				if (++_counter % 2 == 1)
-				{
-					_buff = _isRightnow;
-					return;
-				}
-				if (_counter % 4 == 2) p.Color = Color.Red;
-				p.Color = Color.Blue;
-				canvas.DrawLine(_buff.X, _buff.Y, _isRightnow.X, _isRightnow.Y, p);
-			}
-			else return;
+            Point buf1 = null;
+            Point buf2 = null;
+			for (int i = 0; i < arr.Length; i++)
+            {
+                if (buf1 == null &&
+                    x1 >= (arr[i].X - 20) &&
+                    x1 <= (arr[i].X + 20) &&
+                    y1 >= (arr[i].Y - 20) &&
+                    y1 <= (arr[i].Y + 20))
+                    buf1 = arr[i];
+                if (buf1 != null && buf2 == null &&
+                    x2 >= (arr[i].X - 20) &&
+                    x2 <= (arr[i].X + 20) &&
+                    y2 >= (arr[i].Y - 20) &&
+                    y2 <= (arr[i].Y + 20))
+                    buf2 = arr[i];
+                
+            }
+            if (buf1 != null && buf2 != null)
+                return new Line(buf1, buf2);
+            else return null;
 		}
-	}
+    }
 }
