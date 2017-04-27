@@ -1,7 +1,5 @@
 ﻿using System;
 using Android.Graphics;
-using Android.Content;
-using Android.Views;
 namespace Sim
 {
     public class MainMenu

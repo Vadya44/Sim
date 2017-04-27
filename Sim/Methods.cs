@@ -11,7 +11,6 @@ namespace Sim
 	{
 		static int _counter;
 		static Point _isRightnow;
-		static Point _buff;
 		static Point[] _arr;
 		private static bool Validate(int x, int y)
 		{
