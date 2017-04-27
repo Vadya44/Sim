@@ -64,26 +64,33 @@ namespace Sim
 		public static Line DrawLine(float x1, float y1, float x2,
             float y2, Point[] arr)
 		{
+            Line res;
             Point buf1 = null;
             Point buf2 = null;
-			for (int i = 0; i < arr.Length; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
                 if (buf1 == null &&
-                    x1 >= (arr[i].X - 20) &&
-                    x1 <= (arr[i].X + 20) &&
-                    y1 >= (arr[i].Y - 20) &&
-                    y1 <= (arr[i].Y + 20))
+                    x1 >= (arr[i].X - 60) &&
+                    x1 <= (arr[i].X + 60) &&
+                    y1 >= (arr[i].Y - 60) &&
+                    y1 <= (arr[i].Y + 60))
                     buf1 = arr[i];
                 if (buf1 != null && buf2 == null &&
-                    x2 >= (arr[i].X - 20) &&
-                    x2 <= (arr[i].X + 20) &&
-                    y2 >= (arr[i].Y - 20) &&
-                    y2 <= (arr[i].Y + 20))
+                    x2 >= (arr[i].X - 60) &&
+                    x2 <= (arr[i].X + 60) &&
+                    y2 >= (arr[i].Y - 60) &&
+                    y2 <= (arr[i].Y + 60))
+                {
                     buf2 = arr[i];
+                    break;
+                }
                 
             }
             if (buf1 != null && buf2 != null)
-                return new Line(buf1, buf2);
+            {
+                res = new Line(buf1, buf2);
+                return res;
+            }
             else return null;
 		}
     }

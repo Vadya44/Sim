@@ -1,24 +1,31 @@
 ﻿using System;
 using Android.Graphics;
 using System.Collections.Generic;
+using Android.Graphics.Drawables;
 namespace Sim
 {
     public static class Game_Solo
     {
         // With clicks
+        private static Line[] _lArr;
         private static List<Line> _lines;
         static Point[] _points;
-        private static Canvas _canvas;
         public static void OnDraw(Canvas canvas)
         {
-            _canvas = canvas;
             canvas.DrawColor(Paints.background.Color);
             Circle _circle = new Circle();
             _circle.Draw(canvas);
             Methods.DrawPoints(_points, canvas, _circle);
             Paints.DrawButton(canvas, 375, 1050, 690, 1150);
             Paints.DrawText(canvas, 385, 1120, "Concede", 75, 50);
-           
+            if (_lArr != null) 
+            {
+                for (int i = 0; i < _lArr.Length; i++)
+                canvas.DrawLine(_lArr[i].p1.X * GameView.Factor, 
+                  _lArr[i].p1.Y * GameView.Factor,
+                 _lArr[i].p2.X * GameView.Factor, 
+                 GameView.Factor * _lArr[i].p2.Y, Paints.Circ);
+            }
         }
         public static void Show()
         {
@@ -30,6 +37,8 @@ namespace Sim
         }
         public static void Hide()
         {
+            _lines.Clear();
+            _lArr = null;
             GameView.DrawEvent -= OnDraw;
         }
         public static void JustTouch(float x, float y)
@@ -50,7 +59,11 @@ namespace Sim
             }
             Line buff = Methods.DrawLine(x1, y1, x2, y2, _points);
             if (buff != null)
-            _lines.Add(buff);
+            {
+                _lines.Add(buff);
+                _lArr = _lines.ToArray();
+            }
+            GameView.Instance.Invalidate();
         }
     }
 }
