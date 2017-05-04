@@ -6,9 +6,9 @@ namespace Sim
     public static class Game_Solo
     {
         // With clicks
-        private static Line[] _lArr;
-        private static List<Line> _lines;
-        static Point[] _points;
+        public static Line[] _lArr;
+        public static List<Line> _lines;
+        public static Point[] _points;
         public static void OnDraw(Canvas canvas)
         {
             canvas.DrawColor(Paints.background.Color);
@@ -61,6 +61,8 @@ namespace Sim
             {
                 _lines.Add(buff);
                 _lArr = _lines.ToArray();
+				_lines.Add(GameLogicSolo.turnSender(_points,
+								    _lArr));
             }
             GameView.Instance.Invalidate();
         }
