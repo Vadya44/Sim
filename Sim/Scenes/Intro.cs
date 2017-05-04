@@ -1,14 +1,5 @@
 ﻿using Android.App;
-using Android.Content.Res;
 using Android.Graphics;
-using Android.OS;
-using Android.Widget;
-using Android.Graphics.Drawables;
-using Android.Content.PM;
-using Android.Content;
-using Android.Graphics.Drawables.Shapes;
-using System.IO;
-using System.Threading;
 using System.Timers;
 namespace Sim
 {

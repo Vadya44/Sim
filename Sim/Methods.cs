@@ -33,8 +33,7 @@ namespace Sim
 		public static Point[] CreatePoints(int number, Circle circle,int px)
 		{
 			if (_counter != 0) return _arr;
-			var clr1 = new Color(244, 91, 105);
-			var clr2 = new Color(69, 105, 144);
+			Color clr = new Color(47, 6, 1);
 			_arr = new Point[number];
 			int max_delta = 360 / number;
 			int min_delta = 30;
@@ -47,7 +46,6 @@ namespace Sim
 				double s = Math.Sin(Methods.DegreeToRadian(alpha));
 				int x1 = (int)(circle.X + rx * c - ry * s);
 				int y1 = (int)(circle.Y + rx * s + ry * c);
-				Color clr = i % 2 == 0 ? clr1 : clr2;
 				_arr[i] = new Point(x1, y1, clr);
 			}
 			return _arr;

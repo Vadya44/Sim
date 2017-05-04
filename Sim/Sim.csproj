@@ -74,6 +74,7 @@
     <Compile Include="Point.cs" />
     <Compile Include="Methods.cs" />
     <Compile Include="Circle.cs" />
+    <Compile Include="GameLogicSolo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

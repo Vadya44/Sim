@@ -23,7 +23,7 @@ namespace Sim
                 canvas.DrawLine(_lArr[i].p1.X * GameView.Factor, 
                   _lArr[i].p1.Y * GameView.Factor,
                  _lArr[i].p2.X * GameView.Factor, 
-                 GameView.Factor * _lArr[i].p2.Y, Paints.Circ);
+                 GameView.Factor * _lArr[i].p2.Y, Paints.plSoloLine);
             }
         }
         public static void Show()

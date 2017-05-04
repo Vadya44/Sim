@@ -27,6 +27,16 @@ namespace Sim
 			// result lose color and other settings
 			resultLose.Color = Color.Rgb(85, 58, 65);
 			resultLose.SetStyle(Paint.Style.Fill);
+
+			//solo line player
+			plSoloLine.Color = new Color(69, 105, 144);
+			plSoloLine.StrokeWidth = 720 / 60 * GameView.Factor;
+			plSoloLine.SetStyle(Paint.Style.Stroke);
+
+			//solo line bot
+			botSoloLine.Color = new Color(244, 91, 105);
+			botSoloLine.StrokeWidth = 720 / 60 * GameView.Factor;
+			botSoloLine.SetStyle(Paint.Style.Stroke);
 		}
 		public static float F = GameView.Factor;
 		public static Paint background = new Paint();
@@ -35,6 +45,8 @@ namespace Sim
 		public static Paint resultWin = new Paint();
 		public static Paint resultLose = new Paint();
 		public static Paint Circ = new Paint();
+		public static Paint plSoloLine = new Paint();
+		public static Paint botSoloLine = new Paint();
 		public static void DrawButton(Canvas canvas, int x1, int y1, int x2, int y2)
 		{
 			canvas.DrawRoundRect(x1 * F, y1 * F,
