@@ -6,8 +6,10 @@ namespace Sim
     public static class Game_Solo
     {
         // With clicks
-        public static Line[] _lArr;
-        public static List<Line> _lines;
+        public static Line[] _plArr;
+		public static Line[] _botArr;
+        public static List<Line> _pllines;
+		public static List<Line> _botLines;
         public static Point[] _points;
         public static void OnDraw(Canvas canvas)
         {
@@ -17,18 +19,24 @@ namespace Sim
             Methods.DrawPoints(_points, canvas, _circle);
             Paints.DrawButton(canvas, 375, 1050, 690, 1150);
             Paints.DrawText(canvas, 385, 1120, "Concede", 75, 50);
-            if (_lArr != null) 
+            if (_plArr != null) 
             {
-                for (int i = 0; i < _lArr.Length; i++)
-                canvas.DrawLine(_lArr[i].p1.X * GameView.Factor, 
-                  _lArr[i].p1.Y * GameView.Factor,
-                 _lArr[i].p2.X * GameView.Factor, 
-                 GameView.Factor * _lArr[i].p2.Y, Paints.plSoloLine);
+                for (int i = 0; i < _plArr.Length; i++)
+                canvas.DrawLine(_plArr[i].p1.X * GameView.Factor, 
+                  _plArr[i].p1.Y * GameView.Factor,
+                 _plArr[i].p2.X * GameView.Factor, 
+                 GameView.Factor * _plArr[i].p2.Y, Paints.plSoloLine);
+				for (int i = 0; i < _botArr.Length; i++)
+					canvas.DrawLine(_botArr[i].p1.X * GameView.Factor,
+					  _botArr[i].p1.Y * GameView.Factor,
+					 _botArr[i].p2.X * GameView.Factor,
+					 GameView.Factor * _botArr[i].p2.Y, Paints.botSoloLine);
             }
         }
         public static void Show()
         {
-            _lines = new List<Line>();
+            _pllines = new List<Line>();
+			_botLines = new List<Line>();
             Circle _circle = new Circle();
             _points = Methods.CreatePoints(10, _circle, 720);
             GameView.activeScene = "Game_Solo";
@@ -36,8 +44,10 @@ namespace Sim
         }
         public static void Hide()
         {
-            _lines.Clear();
-            _lArr = null;
+            _pllines.Clear();
+            _plArr = null;
+			_botLines.Clear();
+			_botArr = null;
             GameView.DrawEvent -= OnDraw;
         }
         public static void JustTouch(float x, float y)
@@ -59,10 +69,10 @@ namespace Sim
             Line buff = Methods.DrawLine(x1, y1, x2, y2, _points);
             if (buff != null)
             {
-                _lines.Add(buff);
-                _lArr = _lines.ToArray();
-				_lines.Add(GameLogicSolo.turnSender(_points,
-								    _lArr));
+                _pllines.Add(buff);
+                _plArr = _pllines.ToArray();
+		_botLines.Add(GameLogicSolo.turnSender(_points, _plArr));
+				_botArr = _botLines.ToArray();
             }
             GameView.Instance.Invalidate();
         }
