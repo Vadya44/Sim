@@ -79,16 +79,14 @@ namespace Sim
                 _pllines.Add(buff);
                 _plArr = _pllines.ToArray();
                 _usedLines.Add(buff);
-                Line buffBot = turnSender();
-                _usedLines.Add(buffBot);
-                _botLines.Add(buffBot);
+                TurnSender();
                 _botArr = _botLines.ToArray();
             }
             GameView.Instance.Invalidate();
         }
-        public static Line turnSender()
+        public static void TurnSender()
         {
-
+			Line buffBot;
             _usedArr = _usedLines.ToArray();
             for (int i = 0; i < _points.Length; i++)
                 for (int j = 0; j < _points.Length; j++)
@@ -100,20 +98,22 @@ namespace Sim
                                              _points[j]);
                         for (int k = 0; k < _usedArr.Length; k++)
                         {
-                            if (buff.p1.X == _usedArr[k].p1.X &&
-                                buff.p1.Y == _usedArr[k].p1.Y &&
-                                buff.p2.X == _usedArr[k].p2.X &&
-                                buff.p2.Y == _usedArr[k].p2.Y)
-                            {
-                                isSuit = false;
-                                break;
-                            }
+							if (buff == _usedArr[k])
+							{
+								isSuit = false;
+								break;
+							}
                         }
-                        if (isSuit)
-                            return buff;
+						if (isSuit)
+						{
+							buffBot = buff;
+							_usedLines.Add(buffBot);
+							_botLines.Add(buffBot);
+							return ;
+						}
                     }
                 }
-            return null;
+			return;
 
         }
     }
