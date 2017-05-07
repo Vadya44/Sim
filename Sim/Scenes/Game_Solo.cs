@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Graphics;
 using System.Collections.Generic;
+using Android.Util;
 namespace Sim
 {
     public static class Game_Solo
@@ -8,6 +9,7 @@ namespace Sim
         // With clicks
         public static Line[] _plArr;
         public static Line[] _botArr;
+        public static Line[] _usedArr;
         public static List<Line> _pllines;
         public static List<Line> _botLines;
         public static List<Line> _usedLines;
@@ -75,12 +77,43 @@ namespace Sim
                 _pllines.Add(buff);
                 _plArr = _pllines.ToArray();
                 _usedLines.Add(buff);
-                Line buffBot = GameLogicSolo.turnSender(_points, _usedLines);
+                Line buffBot = turnSender();
+                _usedLines.Add(buffBot);
                 _botLines.Add(buffBot);
                 _botArr = _botLines.ToArray();
-                _usedLines.Add(buffBot);
             }
             GameView.Instance.Invalidate();
+        }
+        public static Line turnSender()
+        {
+
+            _usedArr = _usedLines.ToArray();
+            Line botTurn = null;
+            for (int i = 0; i < _points.Length; i++)
+                for (int j = 0; j < _points.Length; j++)
+                {
+                    bool isSuit = true;
+                    if (i != j)
+                    {
+                        Line buff = new Line(_points[i],
+                                             _points[j]);
+                        for (int k = 0; k < _usedArr.Length; k++)
+                        {
+                            if (buff.p1.X == _usedArr[k].p1.X &&
+                                buff.p1.Y == _usedArr[k].p1.Y &&
+                                buff.p2.X == _usedArr[k].p2.X &&
+                                buff.p2.Y == _usedArr[k].p2.Y)
+                            {
+                                isSuit = false;
+                                break;
+                            }
+                        }
+                        if (isSuit)
+                            botTurn = buff;
+                    }
+                }
+            return botTurn;
+
         }
     }
 }
