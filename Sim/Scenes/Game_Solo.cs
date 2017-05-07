@@ -57,6 +57,7 @@ namespace Sim
         }
         public static void JustTouch(float x, float y)
         {
+            GameView.Instance.Invalidate();
             if (x > 375 && x < 690 && y > 1050 && y < 1150)
             {
                 Hide();
@@ -65,6 +66,7 @@ namespace Sim
         }
         public static void MovedTouch(float x1, float y1, float x2, float y2)
         {
+            GameView.Instance.Invalidate();
             if (x1 > 375 && x1 < 690 && y1 > 1050 && y1 < 1150 &&
                 x2 > 375 && x2 < 690 && y2 > 1050 && y2 < 1150)
             {
@@ -88,7 +90,6 @@ namespace Sim
         {
 
             _usedArr = _usedLines.ToArray();
-            Line botTurn = null;
             for (int i = 0; i < _points.Length; i++)
                 for (int j = 0; j < _points.Length; j++)
                 {
@@ -109,10 +110,10 @@ namespace Sim
                             }
                         }
                         if (isSuit)
-                            botTurn = buff;
+                            return buff;
                     }
                 }
-            return botTurn;
+            return null;
 
         }
     }
