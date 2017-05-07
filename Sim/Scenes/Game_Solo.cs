@@ -67,7 +67,7 @@ namespace Sim
 			if (x > 375 && x < 690 && y > 1050 && y < 1150)
 			{
 				Hide();
-				Result_Solo.Show();
+				Result_Solo.Show(false);
 			}
 		}
 		public static void MovedTouch(float x1, float y1, float x2, float y2)
@@ -77,7 +77,7 @@ namespace Sim
 			    x2 > 375 && x2 < 690 && y2 > 1050 && y2 < 1150)
 			{
 				Hide();
-				Result_Solo.Show();
+				Result_Solo.Show(false);
 			}
 			Line buff = Methods.DrawLine(x1, y1, x2, y2, _points);
 			if (buff != nLine)
@@ -89,12 +89,12 @@ namespace Sim
 				if(IsBotWin())
 				{
 					Hide();
-					Result_Solo.Show();
+					Result_Solo.Show(false);
 				}
 				if(IsPlayerWin())
 				{
 					Hide();
-					Result_Solo.Show();
+					Result_Solo.Show(true);
 				}
 			}
 			GameView.Instance.Invalidate();

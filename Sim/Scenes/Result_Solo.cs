@@ -4,17 +4,21 @@ namespace Sim
 {
 	public static class Result_Solo
 	{
+		private static bool _isPlWin;
 		// With clicks
 		public static void OnDraw(Canvas canvas)
 		{
-			Paints.DrawRes(canvas, false);
-			Paints.DrawButton(canvas, 135, 1000, 585, 1150);
+			if (_isPlWin)
+				Paints.DrawRes(canvas, true);
+			else Paints.DrawRes(canvas, false);
+				Paints.DrawButton(canvas, 135, 1000, 585, 1150);
 			Paints.DrawText(canvas, 138, 1100, "Main menu", 90, 60);
 			Paints.DrawButton(canvas, 135, 800, 585, 950);
 			Paints.DrawText(canvas, 148, 900, "New game", 90, 60);
 		}
-		public static void Show()
+		public static void Show(bool isPlayerWin)
 		{
+			_isPlWin = isPlayerWin;
             GameView.activeScene = "Result_Solo";
 			GameView.DrawEvent += OnDraw;
 		}
