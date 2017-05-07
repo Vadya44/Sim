@@ -7,6 +7,8 @@ namespace Sim
     public static class Game_Solo
     {
         // With clicks
+        public static Line nLine = new Line(new Point(0, 0, Color.AliceBlue),
+            new Point(0, 0, Color.AliceBlue));
         public static Line[] _plArr;
         public static Line[] _botArr;
         public static Line[] _usedArr;
@@ -74,13 +76,12 @@ namespace Sim
                 Result_Solo.Show();
             }
             Line buff = Methods.DrawLine(x1, y1, x2, y2, _points);
-            if (buff != null)
+            if (buff != nLine)
             {
                 _pllines.Add(buff);
                 _plArr = _pllines.ToArray();
                 _usedLines.Add(buff);
                 TurnSender();
-                _botArr = _botLines.ToArray();
             }
             GameView.Instance.Invalidate();
         }
@@ -109,7 +110,8 @@ namespace Sim
 							buffBot = buff;
 							_usedLines.Add(buffBot);
 							_botLines.Add(buffBot);
-							return ;
+                            _botArr = _botLines.ToArray();
+                            return ;
 						}
                     }
                 }

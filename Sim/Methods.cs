@@ -88,7 +88,7 @@ namespace Sim
                 res = new Line(buf1, buf2);
                 return res;
             }
-            else return null;
+            else return Game_Solo.nLine;
 		}
     }
 }
