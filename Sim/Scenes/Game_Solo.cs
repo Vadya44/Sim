@@ -40,8 +40,6 @@ namespace Sim
 		}
 		public static void Show()
 		{
-			isBotWin = false;
-			isPlayerWin = false;
 			_pllines = new List<Line>();
 			_botLines = new List<Line>();
 			_usedLines = new List<Line>();
@@ -52,8 +50,6 @@ namespace Sim
 		}
 		public static void Hide()
 		{
-			isBotWin = false;
-			isPlayerWin = false;
 			_pllines.Clear();
 			_plArr = null;
 			_botLines.Clear();
