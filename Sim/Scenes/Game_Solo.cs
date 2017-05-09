@@ -36,6 +36,7 @@ namespace Sim
 					  _botArr[j].p1.Y * GameView.Factor,
 					 _botArr[j].p2.X * GameView.Factor,
 					 GameView.Factor * _botArr[j].p2.Y, Paints.botSoloLine);
+
 			}
 		}
 		public static void Show()
@@ -133,13 +134,13 @@ namespace Sim
 			for (int i = 0; i < _plArr.Length; i++)
 				for (int j = 0; j < _plArr.Length; j++)
 					for (int k = 0; k < _plArr.Length;k++)
-					if (i != j && j != k && i != k)
+					if (i == j && j == k && i == k)
 					{
 							if (IsTriangle(_plArr[i],
 								      _plArr[j], _plArr[k]))
 								return true;
 					}
-			return false;
+            return false;
 		}
 		public static bool IsPlayerWin()
 		{
@@ -152,10 +153,16 @@ namespace Sim
 									  _botArr[j], _botArr[k]))
 								return true;
 						}
-			return false;
+            return false;
 		}
 		public static bool IsTriangle(Line l1, Line l2, Line l3)
 		{
+            string tag = "wwww";
+            string Lines = l1.p1.X.ToString() + " " + l1.p1.Y.ToString() + " " + l1.p2.X.ToString() + " " +
+                l1.p2.Y.ToString() + " " + l2.p1.X.ToString() + " " + l2.p1.Y.ToString() + " " +
+                l2.p2.X.ToString() + " " + l2.p2.Y.ToString() + " " + l3.p1.X.ToString() + " " +
+                l3.p1.Y.ToString() + " " + l3.p2.X.ToString() + " " + l3.p2.Y.ToString();
+            Log.Info(tag, Lines);
 			if (l1.p2.X == l2.p1.X &&
 			   l2.p2.Y == l3.p1.Y &&
 			   l3.p2.X == l1.p1.X)
