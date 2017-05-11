@@ -77,7 +77,7 @@ namespace Sim
 				Result_Solo.Show(false);
 			}
 			Line buff = Methods.DrawLine(x1, y1, x2, y2, _points);
-			if (buff != nLine)
+			if (buff != nLine && !_usedLines.Contains(buff))
 			{
 				_pllines.Add(buff);
                 _pllines.Add(ReverseLine(buff));
@@ -116,10 +116,17 @@ namespace Sim
 				for (int j = 0; j < _points.Length; j++)
 				{
 					bool isSuit = true;
+                    bool rigthTurn = true;
 					if (i != j)
 					{
 						Line buff = new Line(_points[i],
 								     _points[j]);
+                        if (_botArr != null)
+                            for (int l = 0; l < _botArr.Length; l++)
+                                for (int z = 0; z < _botArr.Length; z++)
+                                    if (IsTriangle(_botArr[z], _botArr[l], buff) &&
+                                        l < _points.Length * 0.9) rigthTurn = false;
+                        if (!rigthTurn) continue;
 						for (int k = 0; k < _usedArr.Length; k++)
 						{
 							if (buff == _usedArr[k])
