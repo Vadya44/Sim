@@ -21,6 +21,7 @@
         {
             _p1 = p1;
             _p2 = p2;
+            
         }
         public Point p1
         {

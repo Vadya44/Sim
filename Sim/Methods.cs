@@ -72,6 +72,8 @@ namespace Sim
                     y1 >= (arr[i].Y - 60) &&
                     y1 <= (arr[i].Y + 60))
                     buf1 = arr[i];
+            }
+            for (int i = 0; i < arr.Length; i++)
                 if (buf1 != null && buf2 == null &&
                     x2 >= (arr[i].X - 60) &&
                     x2 <= (arr[i].X + 60) &&
@@ -82,7 +84,7 @@ namespace Sim
                     break;
                 }
                 
-            }
+            
             if (buf1 != null && buf2 != null)
             {
                 res = new Line(buf1, buf2);

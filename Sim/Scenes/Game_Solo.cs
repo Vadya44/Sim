@@ -45,7 +45,7 @@ namespace Sim
 			_botLines = new List<Line>();
 			_usedLines = new List<Line>();
 			Circle _circle = new Circle();
-			_points = Methods.CreatePoints(5, _circle, 720);
+			_points = Methods.CreatePoints(7, _circle, 720);
 			GameView.activeScene = "Game_Solo";
 			GameView.DrawEvent += OnDraw;
 		}
@@ -80,8 +80,20 @@ namespace Sim
 			if (buff != nLine)
 			{
 				_pllines.Add(buff);
+                _pllines.Add(ReverseLine(buff));
 				_plArr = _pllines.ToArray();
-				_usedLines.Add(buff);
+                if (IsBotWin())
+                {
+                    Hide();
+                    Result_Solo.Show(false);
+                }
+                if (IsPlayerWin())
+                {
+                    Hide();
+                    Result_Solo.Show(true);
+                }
+                _usedLines.Add(buff);
+                _usedLines.Add(ReverseLine(buff));
 				TurnSender();
 				if(IsBotWin())
 				{
@@ -120,7 +132,9 @@ namespace Sim
 						{
 							buffBot = buff;
 							_usedLines.Add(buffBot);
+                            _usedLines.Add(ReverseLine(buffBot));
 							_botLines.Add(buffBot);
+                            _botLines.Add(ReverseLine(buffBot));
 							_botArr = _botLines.ToArray();
 							return;
 						}
@@ -131,10 +145,11 @@ namespace Sim
 		}
 		public static bool IsBotWin()
 		{
+            if (_plArr != null) 
 			for (int i = 0; i < _plArr.Length; i++)
 				for (int j = 0; j < _plArr.Length; j++)
 					for (int k = 0; k < _plArr.Length;k++)
-					if (i == j && j == k && i == k)
+					if ((i == j && j == k && i == k))
 					{
 							if (IsTriangle(_plArr[i],
 								      _plArr[j], _plArr[k]))
@@ -144,10 +159,11 @@ namespace Sim
 		}
 		public static bool IsPlayerWin()
 		{
+            if(_botArr!=null)
 			for (int i = 0; i < _botArr.Length; i++)
 				for (int j = 0; j < _botArr.Length; j++)
 					for (int k = 0; k < _botArr.Length; k++)
-						if (i != j && j != k && i != k)
+						if ((i != j && j != k && i != k))
 						{
 							if (IsTriangle(_botArr[i],
 									  _botArr[j], _botArr[k]))
@@ -157,37 +173,36 @@ namespace Sim
 		}
 		public static bool IsTriangle(Line l1, Line l2, Line l3)
 		{
-            string tag = "wwww";
-            string Lines = l1.p1.X.ToString() + " " + l1.p1.Y.ToString() + " " + l1.p2.X.ToString() + " " +
-                l1.p2.Y.ToString() + " " + l2.p1.X.ToString() + " " + l2.p1.Y.ToString() + " " +
-                l2.p2.X.ToString() + " " + l2.p2.Y.ToString() + " " + l3.p1.X.ToString() + " " +
-                l3.p1.Y.ToString() + " " + l3.p2.X.ToString() + " " + l3.p2.Y.ToString();
-            Log.Info(tag, Lines);
-			if (l1.p2.X == l2.p1.X &&
-			   l2.p2.Y == l3.p1.Y &&
-			   l3.p2.X == l1.p1.X)
-				return true;
-			if (l1.p2.X == l3.p1.X &&
-			   l3.p2.Y == l2.p1.Y &&
-			   l2.p2.X == l1.p1.X)
-				return true;
-			if (l2.p2.X == l1.p1.X &&
-			   l1.p2.Y == l3.p1.Y &&
-			   l3.p2.X == l2.p1.X)
-				return true;
-			if (l2.p2.X == l3.p1.X &&
-			   l3.p2.Y == l1.p1.Y &&
-			   l1.p2.X == l2.p1.X)
-				return true;
-			if (l3.p2.X == l1.p1.X &&
-			   l1.p2.Y == l2.p1.Y &&
-			   l2.p2.X == l3.p1.X)
-				return true;
-			if (l3.p2.X == l2.p1.X &&
-			   l2.p2.Y == l1.p1.Y &&
-			   l1.p2.X == l3.p1.X)
-				return true;
-			return false;
+            //string tag = "wwww";
+            //string Lines = l1.p1.X.ToString() + " " + l1.p1.Y.ToString() + " " + l1.p2.X.ToString() + " " +
+            //    l1.p2.Y.ToString() + " " + l2.p1.X.ToString() + " " + l2.p1.Y.ToString() + " " +
+            //    l2.p2.X.ToString() + " " + l2.p2.Y.ToString() + " " + l3.p1.X.ToString() + " " +
+            //    l3.p1.Y.ToString() + " " + l3.p2.X.ToString() + " " + l3.p2.Y.ToString();
+            //Log.Info(tag, Lines);
+            if (TriangleCheck(l1, l2, l3)) return true;
+            if (TriangleCheck(l1, l3, l2)) return true;
+            if (TriangleCheck(l2, l1, l3)) return true;
+            if (TriangleCheck(l2, l3, l1)) return true;
+            if (TriangleCheck(l3, l1, l2)) return true;
+            if (TriangleCheck(l3, l2, l1)) return true;
+            return false;
 		}
+
+        public static bool TriangleCheck(Line l1, Line l2, Line l3)
+        {
+            return (l1.p2.X == l2.p1.X &&
+                l1.p2.Y == l2.p1.Y &&
+                l2.p2.X == l3.p1.X &&
+                l2.p2.Y == l3.p1.Y &&
+                l3.p2.X == l1.p1.X &&
+                l3.p2.Y == l1.p1.Y);
+        }
+
+        public static Line ReverseLine(Line line)
+        {
+            if (line != nLine)
+                return new Line(line.p2, line.p1);
+            else return nLine;
+        }
 	}
 }
