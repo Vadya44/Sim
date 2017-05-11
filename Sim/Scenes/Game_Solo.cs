@@ -149,7 +149,7 @@ namespace Sim
 			for (int i = 0; i < _plArr.Length; i++)
 				for (int j = 0; j < _plArr.Length; j++)
 					for (int k = 0; k < _plArr.Length;k++)
-					if ((i == j && j == k && i == k))
+					if (i != j && j != k && i != k)
 					{
 							if (IsTriangle(_plArr[i],
 								      _plArr[j], _plArr[k]))
@@ -163,7 +163,7 @@ namespace Sim
 			for (int i = 0; i < _botArr.Length; i++)
 				for (int j = 0; j < _botArr.Length; j++)
 					for (int k = 0; k < _botArr.Length; k++)
-						if ((i != j && j != k && i != k))
+						if (i != j && j != k && i != k)
 						{
 							if (IsTriangle(_botArr[i],
 									  _botArr[j], _botArr[k]))
