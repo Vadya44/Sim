@@ -9,13 +9,13 @@ namespace Sim
 		// With clicks
 		public static Line nLine = new Line(new Point(0, 0, Color.AliceBlue),
 		    new Point(0, 0, Color.AliceBlue));
-		public static Line[] _plArr;
-		public static Line[] _botArr;
-		public static Line[] _usedArr;
-		public static List<Line> _pllines;
-		public static List<Line> _botLines;
-		public static List<Line> _usedLines;
-		public static Point[] _points;
+		private static Line[] _plArr;
+		private static Line[] _botArr;
+		private static Line[] _usedArr;
+		private static List<Line> _pllines;
+		private static List<Line> _botLines;
+		private static List<Line> _usedLines;
+		private static Point[] _points;
 		public static void OnDraw(Canvas canvas)
 		{
 			canvas.DrawColor(Paints.background.Color);
@@ -45,7 +45,7 @@ namespace Sim
 			_botLines = new List<Line>();
 			_usedLines = new List<Line>();
 			Circle _circle = new Circle();
-			_points = Methods.CreatePoints(7, _circle, 720);
+			_points = Methods.CreatePoints(9, _circle, 720);
 			GameView.activeScene = "Game_Solo";
 			GameView.DrawEvent += OnDraw;
 		}

@@ -21,11 +21,8 @@ namespace Sim
                 case "MainMenu":
                     MainMenu.JustTouch(x, y);
                     break;
-                case "Account":
-                    Account.JustTouch(x, y);
-                    break;
                 case "Authentication":
-                    Account.JustTouch(x, y);
+                    Authentication.JustTouch(x, y);
                     break;
                 case "Game_Ranked":
                     Game_Ranked.JustTouch(x, y);
@@ -59,11 +56,8 @@ namespace Sim
                 case "MainMenu":
                     MainMenu.MovedTouch(x1, y1, x2, y2);
                     break;
-                case "Account":
-                    Account.MovedTouch(x1, y1, x2, y2);
-                    break;
                 case "Authentication":
-                    Account.MovedTouch(x1, y1, x2, y2);
+                    Authentication.MovedTouch(x1, y1, x2, y2);
                     break;
                 case "Game_Ranked":
                     Game_Ranked.MovedTouch(x1, y1, x2, y2);

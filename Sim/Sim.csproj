@@ -56,7 +56,6 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenes\Account.cs" />
     <Compile Include="Scenes\Authentication.cs" />
     <Compile Include="Scenes\Game_Ranked.cs" />
     <Compile Include="Scenes\Game_Solo.cs" />

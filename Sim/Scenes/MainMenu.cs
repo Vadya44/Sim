@@ -13,9 +13,7 @@ namespace Sim
             Paints.DrawButton(canvas, 180, 600, 540, 800); // Training
             Paints.DrawText(canvas, 210, 480, "Ranked", 90, 60);
             Paints.DrawText(canvas, 200, 730, "Training", 90, 60);
-            Paints.DrawButton(canvas, 20, 20, 280, 130); // Account 
             Paints.DrawButton(canvas, 440, 20, 700, 130); // Top
-            Paints.DrawText(canvas, 40, 90, "Account", 60, 40);
             Paints.DrawText(canvas, 500, 95, "Top", 80, 50);
             Paints.DrawButton(canvas, 235, 1000, 485, 1150); // Rules
             Paints.DrawText(canvas, 250, 1100, "Rules", 90, 60);
@@ -40,11 +38,6 @@ namespace Sim
             {
                 Hide();
                 Game_Solo.Show();
-            }
-            if (x > 20 && x < 280 && y > 20 && y < 130)
-            {
-                Hide();
-                Account.Show();
             }
             if (x > 440 && x < 700 && y > 20 && y < 130)
             {
@@ -72,13 +65,6 @@ namespace Sim
             {
                 Hide();
                 Game_Solo.Show();
-            }
-            else
-            if (x1 > 20 && x1 < 280 && y1 > 20 && y1 < 130 &&
-                x2 > 20 && x2 < 280 && y2 > 20 && y2 < 130)
-            {
-                Hide();
-                Account.Show();
             }
             else
             if (x1 > 440 && x1 < 700 && y1 > 20 && y1 < 130 &&

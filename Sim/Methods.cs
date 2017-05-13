@@ -9,7 +9,6 @@ namespace Sim
 {
     public static class Methods
     {
-        static int _counter;
         static Point _isRightnow;
         static Point[] _arr;
         private static bool Validate(int x, int y)
@@ -32,11 +31,10 @@ namespace Sim
         static Random rnd = new Random();
         public static Point[] CreatePoints(int number, Circle circle, int px)
         {
-            if (_counter != 0) return _arr;
             Color clr = new Color(47, 6, 1);
             _arr = new Point[number];
             int max_delta = 360 / number;
-            int min_delta = 30;
+            int min_delta = 40;
             for (int i = 0, alpha = 0; i < number; i++)
             {
                 alpha += rnd.Next(min_delta, max_delta);
