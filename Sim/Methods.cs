@@ -33,11 +33,9 @@ namespace Sim
         {
             Color clr = new Color(47, 6, 1);
             _arr = new Point[number];
-            int max_delta = 360 / number;
-            int min_delta = 40;
             for (int i = 0, alpha = 0; i < number; i++)
             {
-                alpha += rnd.Next(min_delta, max_delta);
+                alpha += 360 / number;
                 int rx = circle.X - circle.X;
                 int ry = circle.Y + circle.Radius - circle.Y;
                 double c = Math.Cos(Methods.DegreeToRadian(alpha));
