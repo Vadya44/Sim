@@ -1413,8 +1413,14 @@ namespace Sim
 			// aapt resource value: 0x7f020045
 			public const int FKNV = 2130837573;
 			
+			// aapt resource value: 0x7f020048
+			public const int notification_template_icon_bg = 2130837576;
+			
 			// aapt resource value: 0x7f020046
-			public const int notification_template_icon_bg = 2130837574;
+			public const int silver = 2130837574;
+			
+			// aapt resource value: 0x7f020047
+			public const int vadya = 2130837575;
 			
 			static Drawable()
 			{

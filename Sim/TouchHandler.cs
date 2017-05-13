@@ -21,6 +21,9 @@ namespace Sim
                 case "MainMenu":
                     MainMenu.JustTouch(x, y);
                     break;
+                case "ModeSelect":
+                    ModeSelect.JustTouch(x, y);
+                    break;
                 case "Authentication":
                     Authentication.JustTouch(x, y);
                     break;
@@ -55,6 +58,9 @@ namespace Sim
             {
                 case "MainMenu":
                     MainMenu.MovedTouch(x1, y1, x2, y2);
+                    break;
+                case "ModeSelect":
+                    ModeSelect.MovedTouch(x1, y1, x2, y2);
                     break;
                 case "Authentication":
                     Authentication.MovedTouch(x1, y1, x2, y2);

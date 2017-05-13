@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimatedRing.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Scenes\Intro.cs" />
     <Compile Include="Scenes\LeaderBoard.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
+    <Compile Include="Scenes\ModeSelect.cs" />
     <Compile Include="Scenes\Ranked_No_Connection.cs" />
     <Compile Include="Scenes\Result_Ranked.cs" />
     <Compile Include="Scenes\Result_Solo.cs" />
@@ -90,6 +92,11 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\drawable\FKNV.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\vadya.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\silver.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

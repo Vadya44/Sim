@@ -54,7 +54,7 @@ namespace Sim
 			Paint p = new Paint();
 			p.SetStyle(Paint.Style.Fill);
 			p.AntiAlias = true;
-			p.Color = new Color(228, 253, 225);
+			p.Color = new Color(171, 162, 182);
 			p.StrokeWidth = 2;
 			canvas.DrawCircle(_x * GameView.Factor,
 			                  _y *GameView.Factor, Radius * GameView.Factor, p);

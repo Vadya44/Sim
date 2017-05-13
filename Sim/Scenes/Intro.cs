@@ -6,7 +6,7 @@ namespace Sim
     public class Intro
     {
 		// No clicks
-        public static System.Timers.Timer aTimer = new System.Timers.Timer();
+        public static Timer aTimer = new Timer();
         static Bitmap _b;
         static Bitmap _bb;
         public static void OnDraw(Canvas canvas)

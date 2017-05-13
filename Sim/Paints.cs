@@ -7,16 +7,16 @@ namespace Sim
 		static Paints()
 		{
 			//background and text color
-			background.Color = Color.Rgb(63, 231, 252);
-			text.Color = Color.Rgb(63, 231, 252);
+			background.Color = Color.Rgb(132, 153, 177);
+			text.Color = Color.Rgb(132, 153, 177);
 
 
 			// button's inside color
-			btns.Color = Color.Rgb(38, 196, 133);
+			btns.Color = Color.Rgb(104, 80, 112);
 			btns.SetStyle(Paint.Style.Fill);
 
 			//button circlular's color
-			Circ.Color = Color.Rgb(47, 6, 1);
+			Circ.Color = Color.Rgb(54, 21, 30);
 			Circ.SetStyle(Paint.Style.Stroke);
 			Circ.StrokeWidth = 5 * GameView.Factor;
 
@@ -37,7 +37,7 @@ namespace Sim
 			botSoloLine.Color = new Color(244, 91, 105);
 			botSoloLine.StrokeWidth = 720 / 60 * GameView.Factor;
 			botSoloLine.SetStyle(Paint.Style.Stroke);
-		}
+        }
 		public static float F = GameView.Factor;
 		public static Paint background = new Paint();
 		public static Paint text = new Paint();
@@ -56,7 +56,12 @@ namespace Sim
 			    x2 * F, y2 * F,
 			    10, 10, Paints.Circ);
 		}
-		public static void DrawText(Canvas canvas, int x1, int y1, string textm,
+        public static void DrawCircle(Canvas canvas, int x, int y, int radius)
+        {
+            canvas.DrawCircle(x * F, y * F, radius * F, btns);
+            canvas.DrawCircle(x * F, y * F, radius * F, Circ);
+        }
+        public static void DrawText(Canvas canvas, int x1, int y1, string textm,
 		    int textSize, int StrokeWidth)
 		{
 			text.StrokeWidth = StrokeWidth * F;
