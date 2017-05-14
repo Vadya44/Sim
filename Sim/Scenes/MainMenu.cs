@@ -28,6 +28,7 @@ namespace Sim
             Paints.DrawText(canvas, 490, 1120, "Rules", 70, 40);
             ring1.Draw(canvas, animTime, 300);
             ring2.Draw(canvas, animTime, 210);
+            GameView.Instance.Invalidate();
         }
         public static double AnimTime
         {
@@ -54,8 +55,10 @@ namespace Sim
             tanim.Update += (sender, e) => AnimTime = (double)e.Animation.AnimatedValue;
             tanim.Start();
 
+            GameView.Instance.Invalidate();
 
-            
+
+
         }
         public static void Hide()
         {

@@ -35,6 +35,8 @@ namespace Sim
         }
         public static void JustTouch(float x, float y)
         {
+            Hide();
+            Game_Solo.Show();
             if (x > 135 && x < 585 && y > 1000 && y < 1150)
             {
                 Hide();
