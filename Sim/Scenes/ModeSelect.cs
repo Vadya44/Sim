@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.App;
 using Android.Graphics;
+using Android.OS;
 namespace Sim
 {
     public static class ModeSelect
@@ -15,8 +16,8 @@ namespace Sim
                 45 * GameView.Factor, null);
             canvas.DrawBitmap(_golden, 173 * GameView.Factor,
                645 * GameView.Factor, null);
-            Paints.DrawText(canvas, 360, 300, "Easy", 70, 40);
-            Paints.DrawText(canvas, 360, 900, "Hard", 70, 40);
+            Paints.DrawTextMode(canvas, 215, 340, "Easy", 130, 100);
+            Paints.DrawTextMode(canvas, 215, 940, "Hard", 130, 100);
         }
         public static void Show()
         {
