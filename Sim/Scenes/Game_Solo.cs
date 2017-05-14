@@ -16,6 +16,7 @@ namespace Sim
 		private static List<Line> _botLines;
 		private static List<Line> _usedLines;
 		private static Point[] _points;
+        private static bool _isHard;
 		public static void OnDraw(Canvas canvas)
 		{
 			canvas.DrawColor(Paints.background.Color);
@@ -24,7 +25,7 @@ namespace Sim
 			Methods.DrawPoints(_points, canvas, _circle);
 			Paints.DrawButton(canvas, 375, 1050, 690, 1150);
 			Paints.DrawText(canvas, 385, 1120, "Concede", 75, 50);
-			if (_plArr != null)
+			if (_plArr != null && _botArr != null)
 			{
 				for (int i = 0; i < _plArr.Length; i++)
 					canvas.DrawLine(_plArr[i].p1.X * GameView.Factor,
@@ -39,8 +40,9 @@ namespace Sim
 
 			}
 		}
-		public static void Show()
+		public static void Show(bool isHard)
 		{
+            _isHard = isHard;
 			_pllines = new List<Line>();
 			_botLines = new List<Line>();
 			_usedLines = new List<Line>();
@@ -112,42 +114,47 @@ namespace Sim
 		{
 			Line buffBot;
 			_usedArr = _usedLines.ToArray();
-			for (int i = 0; i < _points.Length; i++)
-				for (int j = 0; j < _points.Length; j++)
-				{
-					bool isSuit = true;
-                    bool rigthTurn = true;
-					if (i != j)
-					{
-						Line buff = new Line(_points[i],
-								     _points[j]);
-                        if (_botArr != null)
-                            for (int l = 0; l < _botArr.Length; l++)
-                                for (int z = 0; z < _botArr.Length; z++)
-                                    if (IsTriangle(_botArr[z], _botArr[l], buff) &&
-                                        l < _points.Length * 0.9) rigthTurn = false;
-                        if (!rigthTurn) continue;
-						for (int k = 0; k < _usedArr.Length; k++)
-						{
-							if (buff == _usedArr[k])
-							{
-								isSuit = false;
-								break;
-							}
-						}
-						if (isSuit)
-						{
-							buffBot = buff;
-							_usedLines.Add(buffBot);
-                            _usedLines.Add(ReverseLine(buffBot));
-							_botLines.Add(buffBot);
-                            _botLines.Add(ReverseLine(buffBot));
-							_botArr = _botLines.ToArray();
-							return;
-						}
-					}
-				}
-			return;
+            if (_isHard == false)
+            {
+                for (int i = 0; i < _points.Length; i++)
+                    for (int j = 0; j < _points.Length; j++)
+                    {
+                        bool isSuit = true;
+                        bool rigthTurn = true;
+                        if (i != j)
+                        {
+                            Line buff = new Line(_points[i],
+                                         _points[j]);
+                            if (_botArr != null)
+                                for (int l = 0; l < _botArr.Length; l++)
+                                    for (int z = 0; z < _botArr.Length; z++)
+                                        if (IsTriangle(_botArr[z], _botArr[l], buff) &&
+                                            l < _points.Length * 0.9) rigthTurn = false;
+                            if (!rigthTurn) continue;
+                            for (int k = 0; k < _usedArr.Length; k++)
+                            {
+                                if (buff == _usedArr[k])
+                                {
+                                    isSuit = false;
+                                    break;
+                                }
+                            }
+                            if (isSuit)
+                            {
+                                buffBot = buff;
+                                _usedLines.Add(buffBot);
+                                _usedLines.Add(ReverseLine(buffBot));
+                                _botLines.Add(buffBot);
+                                _botLines.Add(ReverseLine(buffBot));
+                                _botArr = _botLines.ToArray();
+                                return;
+                            }
+                        }
+                    }
+                return;
+            }
+            
+            
 
 		}
 		public static bool IsBotWin()

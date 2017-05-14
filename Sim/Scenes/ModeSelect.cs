@@ -38,12 +38,12 @@ namespace Sim
             if (IsEasy(x,y))
             {
                 Hide();
-                Game_Solo.Show();
+                Game_Solo.Show(false);
             }
             if (IsHard(x,y))
             {
                 Hide();
-                Game_Solo.Show();
+                Game_Solo.Show(true);
             }
 
         }
@@ -52,12 +52,12 @@ namespace Sim
             if (IsEasy(x1, y1) && IsEasy(x2,y2))
             {
                 Hide();
-                Game_Solo.Show();
+                Game_Solo.Show(false);
             }
             if (IsHard(x1, y1) && IsHard(x2,y2))
             {
                 Hide();
-                Game_Solo.Show();
+                Game_Solo.Show(true);
             }
         }
         public static bool IsEasy(float x, float y)
