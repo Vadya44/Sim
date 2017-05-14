@@ -37,6 +37,13 @@ namespace Sim
             Paint p = new Paint();
             p.SetStyle(Paint.Style.Fill);
             p.AntiAlias = true;
+            Paint ccir = new Paint();
+            ccir.SetStyle(Paint.Style.Stroke);
+            ccir.AntiAlias = true;
+            ccir.Color = new Color(71, 106, 111);
+            ccir.StrokeWidth = 10 * GameView.Factor;
+            canvas.DrawCircle(360 * GameView.Factor, 640 * GameView.Factor,
+                (float)radius * GameView.Factor, ccir);
             for (int i = 0; i < cnt; ++i)
             {
                 p.Color = colors[i % colors.Length];

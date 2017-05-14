@@ -54,11 +54,6 @@ namespace Sim
             tanim.RepeatMode = ValueAnimatorRepeatMode.Reverse;
             tanim.Update += (sender, e) => AnimTime = (double)e.Animation.AnimatedValue;
             tanim.Start();
-
-            GameView.Instance.Invalidate();
-
-
-
         }
         public static void Hide()
         {
@@ -71,7 +66,7 @@ namespace Sim
                 Hide();
                 Game_Ranked.Show();
             }
-            if (x > 390 && x < 700 && y > 60 && y < 700)
+            if (x > 390 && x < 700 && y > 60 && y < 200)
             {
                 Hide();
                 ModeSelect.Show();
