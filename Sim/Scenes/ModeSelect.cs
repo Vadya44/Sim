@@ -14,9 +14,9 @@ namespace Sim
             Paints.DrawCircle(canvas, 360, 300, 200); // Easy
             Paints.DrawCircle(canvas, 360, 900, 200); // Hard
             canvas.DrawBitmap(_silver, 166 * GameView.Factor,
-                45 * GameView.Factor, null);
+                38 * GameView.Factor, null);
             canvas.DrawBitmap(_golden, 166 * GameView.Factor,
-               645 * GameView.Factor, null);
+               638 * GameView.Factor, null);
             Paints.DrawTextMode(canvas, 215, 340, "Easy", 130, 100);
             Paints.DrawTextMode(canvas, 215, 940, "Hard", 130, 100);
         }

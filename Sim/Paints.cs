@@ -21,11 +21,11 @@ namespace Sim
             Circ.StrokeWidth = 5 * GameView.Factor;
 
             //result win color and other settings
-            resultWin.Color = Color.Rgb(50, 144, 143);
+            resultWin.Color = Color.Rgb(4, 153, 68);
             resultWin.SetStyle(Paint.Style.Fill);
 
             // result lose color and other settings
-            resultLose.Color = Color.Rgb(85, 58, 65);
+            resultLose.Color = Color.Rgb(165, 3, 54);
             resultLose.SetStyle(Paint.Style.Fill);
 
             //solo line player
@@ -61,6 +61,17 @@ namespace Sim
             canvas.DrawCircle(x * F, y * F, radius * F, btns);
             canvas.DrawCircle(x * F, y * F, radius * F, Circ);
         }
+        public static void DrawTextM(Canvas canvas, int x1, int y1, string textm,
+    int textSize, int StrokeWidth)
+        {
+
+            Paint p = new Paint();
+            p.StrokeWidth = StrokeWidth * F;
+            p.TextSize = textSize * F;
+            p.Color = Color.DarkRed;
+            canvas.DrawText(textm, x1 * F,
+                y1 * F, p);
+        }
         public static void DrawText(Canvas canvas, int x1, int y1, string textm,
             int textSize, int StrokeWidth)
         {
@@ -80,21 +91,20 @@ namespace Sim
             {
                 canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
                     180, 180, resultWin);
+                canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
+                    180, 180, Circ);
                 canvas.DrawText("Win", 220 * F, 455 * F, Paints.text);
                 canvas.DrawText("You", 230 * F, 250 * F, Paints.text);
-                canvas.DrawRoundRect(150 * GameView.Factor, 600 * GameView.Factor,
-                 570 * GameView.Factor, 720 * GameView.Factor,
-                    120, 120, Paints.resultWin);
             }
             else
             {
                 canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
                     180, 180, resultLose);
+                canvas.DrawRoundRect(100 * F, 60 * F, 620 * F, 560 * F,
+                    180, 180, Circ);
                 canvas.DrawText("Lose", 190 * F, 455 * F, Paints.text);
                 canvas.DrawText("You", 230 * F, 250 * F, Paints.text);
-                canvas.DrawRoundRect(150 * GameView.Factor, 600 * GameView.Factor,
-                 570 * GameView.Factor, 720 * GameView.Factor,
-                    120, 120, Paints.resultLose);
+
             }
         }
         public static void DrawTextMode(Canvas canvas, int x1, int y1, string textm,

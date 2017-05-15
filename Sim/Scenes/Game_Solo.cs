@@ -174,8 +174,13 @@ namespace Sim
                         if (_botArr != null)
                             for (int l = 0; l < _botArr.Length; l++)
                                 for (int z = 0; z < _botArr.Length; z++)
-                                    if (IsTriangle(_botArr[z], _botArr[l], buff) &&
-                                        counter < 20) rigthTurn = false;
+                                    if (IsTriangle(_botArr[z], _botArr[l], buff))
+                                    {
+                                        _isHard = false;
+                                        TurnSender();
+                                        _isHard = true;
+                                        return;
+                                    }
                         if (!rigthTurn) continue;
                         for (int k = 0; k < _usedArr.Length; k++)
                         {
@@ -194,7 +199,6 @@ namespace Sim
                             _botLines.Add(buffBot);
                             _botLines.Add(ReverseLine(buffBot));
                             _botArr = _botLines.ToArray();
-                            GameView.Instance.Invalidate();
                             return;
                         }
                     }

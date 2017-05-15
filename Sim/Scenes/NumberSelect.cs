@@ -25,6 +25,8 @@ namespace Sim
             Paints.DrawTextMode(canvas, 135, 900, "9", 130, 100);
             Paints.DrawTextMode(canvas, 505, 440, "7", 130, 100);
             Paints.DrawTextMode(canvas, 475, 900, "11", 130, 100);
+            Paints.DrawTextM(canvas, 80, 100, "Choose number", 80, 50);
+            Paints.DrawTextM(canvas, 210, 200, "of points", 80, 50);
         }
         public static void Show()
         {
