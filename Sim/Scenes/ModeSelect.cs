@@ -13,9 +13,9 @@ namespace Sim
             canvas.DrawColor(Paints.background.Color);
             Paints.DrawCircle(canvas, 360, 300, 200); // Easy
             Paints.DrawCircle(canvas, 360, 900, 200); // Hard
-            canvas.DrawBitmap(_silver, 173 * GameView.Factor,
+            canvas.DrawBitmap(_silver, 166 * GameView.Factor,
                 45 * GameView.Factor, null);
-            canvas.DrawBitmap(_golden, 173 * GameView.Factor,
+            canvas.DrawBitmap(_golden, 166 * GameView.Factor,
                645 * GameView.Factor, null);
             Paints.DrawTextMode(canvas, 215, 340, "Easy", 130, 100);
             Paints.DrawTextMode(canvas, 215, 940, "Hard", 130, 100);
@@ -24,11 +24,11 @@ namespace Sim
         {
             _number = numb;
             _silver = Bitmap.CreateScaledBitmap(BitmapFactory.DecodeResource(Application.Context.Resources,
-                Resource.Drawable.silver), (int)(0.7 * GameView.mainWidth * GameView.Factor),
-            (int)(0.3 * GameView.mainHidth * GameView.Factor), false);
+                Resource.Drawable.silver), (int)(0.72 * GameView.mainWidth * GameView.Factor),
+            (int)(0.32 * GameView.mainHidth * GameView.Factor), false);
             _golden = Bitmap.CreateScaledBitmap(BitmapFactory.DecodeResource(Application.Context.Resources,
-                Resource.Drawable.golden),(int)(0.7 * GameView.mainWidth * GameView.Factor),
-            (int)(0.3 * GameView.mainHidth * GameView.Factor), false);
+                Resource.Drawable.golden),(int)(0.72 * GameView.mainWidth * GameView.Factor),
+            (int)(0.32 * GameView.mainHidth * GameView.Factor), false);
             GameView.activeScene = "ModeSelect";
             GameView.DrawEvent += OnDraw;
         }
