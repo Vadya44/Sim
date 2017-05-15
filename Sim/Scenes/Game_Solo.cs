@@ -7,6 +7,7 @@ namespace Sim
     public static class Game_Solo
     {
         // With clicks
+        private static int _number;
         public static Line nLine = new Line(new Point(0, 0, Color.AliceBlue),
             new Point(0, 0, Color.AliceBlue));
         private static Line[] _plArr;
@@ -40,14 +41,15 @@ namespace Sim
 
             }
         }
-        public static void Show(bool isHard)
+        public static void Show(bool isHard, int number)
         {
+            _number = number;
             _isHard = isHard;
             _pllines = new List<Line>();
             _botLines = new List<Line>();
             _usedLines = new List<Line>();
             Circle _circle = new Circle();
-            _points = Methods.CreatePoints(9, _circle, 720);
+            _points = Methods.CreatePoints(number, _circle, 720);
             GameView.activeScene = "Game_Solo";
             GameView.DrawEvent += OnDraw;
         }

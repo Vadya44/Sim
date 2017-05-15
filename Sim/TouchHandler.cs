@@ -27,20 +27,14 @@ namespace Sim
                 case "Authentication":
                     Authentication.JustTouch(x, y);
                     break;
-                case "Game_Ranked":
-                    Game_Ranked.JustTouch(x, y);
-                    break;
                 case "Game_Solo":
                     Game_Solo.JustTouch(x, y);
                     break;
                 case "LeaderBoard":
                     LeaderBoard.JustTouch(x, y);
                     break;
-                case "Ranked_No_Connection":
-                    Ranked_No_Connection.JustTouch(x, y);
-                    break;
-                case "Result_Ranked":
-                    Result_Ranked.JustTouch(x, y);
+                case "NumberSelect":
+                    NumberSelect.JustTouch(x, y);
                     break;
                 case "Result_Solo":
                     Result_Solo.JustTouch(x, y);
@@ -65,20 +59,14 @@ namespace Sim
                 case "Authentication":
                     Authentication.MovedTouch(x1, y1, x2, y2);
                     break;
-                case "Game_Ranked":
-                    Game_Ranked.MovedTouch(x1, y1, x2, y2);
-                    break;
                 case "Game_Solo":
                     Game_Solo.MovedTouch(x1, y1, x2, y2);
                     break;
                 case "LeaderBoard":
                     LeaderBoard.MovedTouch(x1, y1, x2, y2);
                     break;
-                case "Ranked_No_Connection":
-                    Ranked_No_Connection.MovedTouch(x1, y1, x2, y2);
-                    break;
-                case "Result_Ranked":
-                    Result_Ranked.MovedTouch(x1, y1, x2, y2);
+                case "NumberSelect":
+                    NumberSelect.MovedTouch(x1, y1, x2, y2);
                     break;
                 case "Result_Solo":
                     Result_Solo.MovedTouch(x1, y1, x2, y2);

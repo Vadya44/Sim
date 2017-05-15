@@ -6,6 +6,7 @@ namespace Sim
 {
     public static class ModeSelect
     {
+        static int _number;
         static Bitmap _golden, _silver;
         public static void OnDraw(Canvas canvas)
         {
@@ -19,13 +20,14 @@ namespace Sim
             Paints.DrawTextMode(canvas, 215, 340, "Easy", 130, 100);
             Paints.DrawTextMode(canvas, 215, 940, "Hard", 130, 100);
         }
-        public static void Show()
+        public static void Show(int numb)
         {
+            _number = numb;
             _silver = Bitmap.CreateScaledBitmap(BitmapFactory.DecodeResource(Application.Context.Resources,
                 Resource.Drawable.silver), (int)(0.7 * GameView.mainWidth * GameView.Factor),
             (int)(0.3 * GameView.mainHidth * GameView.Factor), false);
             _golden = Bitmap.CreateScaledBitmap(BitmapFactory.DecodeResource(Application.Context.Resources,
-                Resource.Drawable.vadya),(int)(0.7 * GameView.mainWidth * GameView.Factor),
+                Resource.Drawable.golden),(int)(0.7 * GameView.mainWidth * GameView.Factor),
             (int)(0.3 * GameView.mainHidth * GameView.Factor), false);
             GameView.activeScene = "ModeSelect";
             GameView.DrawEvent += OnDraw;
@@ -39,12 +41,12 @@ namespace Sim
             if (IsEasy(x,y))
             {
                 Hide();
-                Game_Solo.Show(false);
+                Game_Solo.Show(false, _number);
             }
             if (IsHard(x,y))
             {
                 Hide();
-                Game_Solo.Show(true);
+                Game_Solo.Show(true, _number);
             }
 
         }
@@ -53,12 +55,12 @@ namespace Sim
             if (IsEasy(x1, y1) && IsEasy(x2,y2))
             {
                 Hide();
-                Game_Solo.Show(false);
+                Game_Solo.Show(false, _number);
             }
             if (IsHard(x1, y1) && IsHard(x2,y2))
             {
                 Hide();
-                Game_Solo.Show(true);
+                Game_Solo.Show(true, _number);
             }
         }
         public static bool IsEasy(float x, float y)

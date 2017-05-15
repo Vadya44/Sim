@@ -18,10 +18,8 @@ namespace Sim
         {
             canvas.DrawColor(Paints.background.Color);
             GameView.Instance.Invalidate();
-            Paints.DrawButton(canvas, 20, 60, 330, 200); // Ranked
             Paints.DrawButton(canvas, 390, 60, 700, 200); // Training
-            Paints.DrawText(canvas, 55, 155, "Ranked", 70, 40);
-            Paints.DrawText(canvas, 420, 155, "Training", 70, 40);
+            Paints.DrawText(canvas, 420, 155, "Play", 70, 40);
             Paints.DrawButton(canvas, 20, 1050, 275, 1150); // Top
             Paints.DrawText(canvas, 90, 1120, "Top", 70, 40);
             Paints.DrawButton(canvas, 445, 1050, 700, 1150); // Rules
@@ -61,15 +59,10 @@ namespace Sim
         }
         public static void JustTouch(float x, float y)
         {
-            if (x > 20 && x < 330 && y > 60 && y < 200)
-            {
-                Hide();
-                Game_Ranked.Show();
-            }
             if (x > 390 && x < 700 && y > 60 && y < 200)
             {
                 Hide();
-                ModeSelect.Show();
+                NumberSelect.Show();
             }
             if (x > 20 && x < 275 && y > 1050 && y < 1150)
             {
@@ -85,18 +78,11 @@ namespace Sim
         }
         public static void MovedTouch(float x1, float y1, float x2, float y2)
         {
-            if (x1 > 20 && x1 < 330 && y1 > 60 && y1 < 200 &&
-                x2 > 20 && x2 < 330 && y2 > 60 && y2 < 200)
-            {
-                Hide();
-                Game_Ranked.Show();
-            }
-            else
             if (x1 > 390 && x1 < 700 && y1 > 60 && y1 < 200 &&
                 x2 > 390 && x2 < 700 && y2 > 60 && y2 < 200)
             {
                 Hide();
-                ModeSelect.Show();
+                NumberSelect.Show();
             }
             else
             if (x1 > 20 && x1 < 275 && y1 > 1050 && y1 < 1150 &&
