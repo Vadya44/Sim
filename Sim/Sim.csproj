@@ -64,7 +64,6 @@
     <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\ModeSelect.cs" />
     <Compile Include="Scenes\NumberSelect.cs" />
-    <Compile Include="Scenes\Ranked_No_Connection.cs" />
     <Compile Include="Scenes\Result_Solo.cs" />
     <Compile Include="Scenes\Rules.cs" />
     <Compile Include="GameView.cs" />

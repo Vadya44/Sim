@@ -81,7 +81,8 @@ namespace Sim
                 }
 
 
-            if (buf1 != null && buf2 != null && buf1.X != buf2.X)
+            if (buf1 != null && buf2 != null 
+                && (buf1.X != buf2.X || buf1.Y != buf2.Y))
             {
                 res = new Line(buf1, buf2);
                 return res;

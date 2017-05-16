@@ -21,10 +21,10 @@ namespace Sim
             Paints.DrawCircle(canvas, 180, 850, 120); //9
             Paints.DrawCircle(canvas, 540, 400, 120); //7 
             Paints.DrawCircle(canvas, 540, 850, 120); //11
-            Paints.DrawTextMode(canvas, 135, 440, "5", 130, 100);
-            Paints.DrawTextMode(canvas, 135, 900, "9", 130, 100);
-            Paints.DrawTextMode(canvas, 505, 440, "7", 130, 100);
-            Paints.DrawTextMode(canvas, 475, 900, "11", 130, 100);
+            Paints.DrawTextMode(canvas, 135, 440, "6", 130, 100);
+            Paints.DrawTextMode(canvas, 110, 893, "10", 130, 100);
+            Paints.DrawTextMode(canvas, 505, 440, "8", 130, 100);
+            Paints.DrawTextMode(canvas, 470, 893, "12", 130, 100);
             Paints.DrawTextM(canvas, 80, 100, "Choose number", 80, 50);
             Paints.DrawTextM(canvas, 210, 200, "of points", 80, 50);
         }
@@ -39,71 +39,71 @@ namespace Sim
         }
         public static void JustTouch(float x, float y)
         {
-            if (Is5(x, y))
+            if (Is6(x, y))
             {
                 Hide();
-                ModeSelect.Show(5);
+                ModeSelect.Show(6);
             }
-            if (Is7(x, y))
+            if (Is8(x, y))
             {
                 Hide();
-                ModeSelect.Show(7);
+                ModeSelect.Show(8);
             }
-            if (Is9(x, y))
+            if (Is10(x, y))
             {
                 Hide();
-                ModeSelect.Show(9);
+                ModeSelect.Show(10);
             }
-            if (Is11(x, y))
+            if (Is12(x, y))
             {
                 Hide();
-                ModeSelect.Show(11);
+                ModeSelect.Show(12);
             }
 
         }
         public static void MovedTouch(float x1, float y1, float x2, float y2)
         {
-            if (Is5(x1, y1) && Is5(x2, y2))
+            if (Is6(x1, y1) && Is6(x2, y2))
             {
                 Hide();
-                ModeSelect.Show(5);
+                ModeSelect.Show(6);
             }
-            if (Is7(x1, y1) && Is7(x2, y2))
+            if (Is8(x1, y1) && Is8(x2, y2))
             {
                 Hide();
-                ModeSelect.Show(7);
+                ModeSelect.Show(8);
             }
-            if (Is9(x1, y1) && Is9(x2, y2))
+            if (Is10(x1, y1) && Is10(x2, y2))
             {
                 Hide();
-                ModeSelect.Show(9);
+                ModeSelect.Show(10);
             }
-            if (Is11(x1, y1) && Is11(x2, y2))
+            if (Is12(x1, y1) && Is12(x2, y2))
             {
                 Hide();
-                ModeSelect.Show(11);
+                ModeSelect.Show(12);
             }
 
         }
-        public static bool Is5(float x, float y)
+        public static bool Is6(float x, float y)
         {
             if (120 > (Math.Sqrt((180 - x) * (180 - x) + (400 - y) * (400 - y))))
                 return true;
             else return false;
         }
-        public static bool Is7(float x, float y)
+        public static bool Is8(float x, float y)
         {
             if (120 > (Math.Sqrt((540 - x) * (540 - x) + (400 - y) * (400 - y))))
                 return true;
             else return false;
         }
-        public static bool Is9(float x, float y)
+        public static bool Is10(float x, float y)
         {
             if (120 > (Math.Sqrt((180 - x) * (180 - x) + (850 - y) * (850 - y))))
                 return true;
             else return false;
         }
-        public static bool Is11(float x, float y)
+        public static bool Is12(float x, float y)
         {
             if (120 > (Math.Sqrt((540 - x) * (540 - x) + (850 - y) * (850 - y))))
                 return true;
