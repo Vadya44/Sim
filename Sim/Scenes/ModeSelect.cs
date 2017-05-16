@@ -1,13 +1,13 @@
 ﻿using System;
 using Android.App;
 using Android.Graphics;
-using Android.OS;
+
 namespace Sim
 {
     public static class ModeSelect
     {
-        static int _number;
-        static Bitmap _golden, _silver;
+        private static int _number;
+        private static Bitmap _golden, _silver;
         public static void OnDraw(Canvas canvas)
         {
             canvas.DrawColor(Paints.background.Color);
@@ -27,7 +27,7 @@ namespace Sim
                 Resource.Drawable.silver), (int)(0.72 * GameView.mainWidth * GameView.Factor),
             (int)(0.32 * GameView.mainHidth * GameView.Factor), false);
             _golden = Bitmap.CreateScaledBitmap(BitmapFactory.DecodeResource(Application.Context.Resources,
-                Resource.Drawable.golden),(int)(0.72 * GameView.mainWidth * GameView.Factor),
+                Resource.Drawable.golden), (int)(0.72 * GameView.mainWidth * GameView.Factor),
             (int)(0.32 * GameView.mainHidth * GameView.Factor), false);
             GameView.activeScene = "ModeSelect";
             GameView.DrawEvent += OnDraw;
@@ -38,12 +38,12 @@ namespace Sim
         }
         public static void JustTouch(float x, float y)
         {
-            if (IsEasy(x,y))
+            if (IsEasy(x, y))
             {
                 Hide();
                 Game_Solo.Show(false, _number);
             }
-            if (IsHard(x,y))
+            if (IsHard(x, y))
             {
                 Hide();
                 Game_Solo.Show(true, _number);
@@ -52,12 +52,12 @@ namespace Sim
         }
         public static void MovedTouch(float x1, float y1, float x2, float y2)
         {
-            if (IsEasy(x1, y1) && IsEasy(x2,y2))
+            if (IsEasy(x1, y1) && IsEasy(x2, y2))
             {
                 Hide();
                 Game_Solo.Show(false, _number);
             }
-            if (IsHard(x1, y1) && IsHard(x2,y2))
+            if (IsHard(x1, y1) && IsHard(x2, y2))
             {
                 Hide();
                 Game_Solo.Show(true, _number);
@@ -65,15 +65,11 @@ namespace Sim
         }
         public static bool IsEasy(float x, float y)
         {
-            if (200 > (Math.Sqrt((360 - x) * (360 - x) + (300 - y) * (300 - y))))
-                return true;
-            else return false;
+            return (200 > (Math.Sqrt((360 - x) * (360 - x) + (300 - y) * (300 - y))));
         }
         public static bool IsHard(float x, float y)
         {
-            if (200 > (Math.Sqrt((360 - x) * (360 - x) + (900 - y) * (900 - y))))
-                return true;
-            else return false;
+            return (200 > (Math.Sqrt((360 - x) * (360 - x) + (900 - y) * (900 - y))));
         }
     }
 }

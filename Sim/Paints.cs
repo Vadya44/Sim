@@ -1,5 +1,6 @@
-﻿using System;
-using Android.Graphics;
+﻿using Android.Graphics;
+
+
 namespace Sim
 {
     public static class Paints

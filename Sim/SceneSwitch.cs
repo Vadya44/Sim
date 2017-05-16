@@ -1,7 +1,4 @@
-﻿using System;
-using Android.Views.Animations;
-using Android.Animation;
-namespace Sim
+﻿namespace Sim
 {
 	public static class SceneSwitch
 	{

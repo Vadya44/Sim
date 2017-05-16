@@ -3,7 +3,7 @@
 
 namespace Sim
 {
-    public static class Rules
+    public static class About
     // With clicks
     {
 
@@ -11,18 +11,11 @@ namespace Sim
         {
             canvas.DrawColor(Paints.resultLose.Color);
             Paints.DrawButton(canvas, 30, 50, 690, 900);
-            Paints.DrawText(canvas, 50, 100, "Two players take turns coloring any", 40, 20);
-            Paints.DrawText(canvas, 105, 170, "uncolored lines. One player", 40, 20);
-            Paints.DrawText(canvas, 110, 240, "colors in one color, and the", 40, 20);
-            Paints.DrawText(canvas, 100, 310, "other colors in another color,", 40, 20);
-            Paints.DrawText(canvas, 140, 380, "with each player trying to", 40, 20);
-            Paints.DrawText(canvas, 33, 450, "avoid the creation of a triangle made", 40, 20);
-            Paints.DrawText(canvas, 50, 530, "solely of their color (only triangles", 40, 20);
-            Paints.DrawText(canvas, 95, 600, "with the dots as corners count;", 40, 20);
-            Paints.DrawText(canvas, 112, 670, "intersections of lines are not", 40, 20);
-            Paints.DrawText(canvas, 140, 740, "relevant); the player who", 40, 20);
-            Paints.DrawText(canvas, 140, 810, "completes such a triangle", 40, 20);
-            Paints.DrawText(canvas, 190, 880, "loses immediately.", 40, 20);
+            Paints.DrawText(canvas, 40, 180, "Application's history:", 70, 50);
+            Paints.DrawText(canvas, 37, 370, "Application is created as part", 50, 30);
+            Paints.DrawText(canvas, 110, 520, "of 1st year project by", 50, 30);
+            Paints.DrawText(canvas, 50, 670, "Gataullin Vadim, student of", 50, 30);
+            Paints.DrawText(canvas, 110, 820, " SE CS HSE. May 2k17", 50, 30);
             Paints.DrawButton(canvas, 100, 1000, 620, 1150);
             Paints.DrawText(canvas, 112, 1100, "Main menu", 100, 75);
 

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-
-namespace Sim
+﻿namespace Sim
 {
     public static class TouchHandler
     {
@@ -24,14 +12,8 @@ namespace Sim
                 case "ModeSelect":
                     ModeSelect.JustTouch(x, y);
                     break;
-                case "Authentication":
-                    Authentication.JustTouch(x, y);
-                    break;
                 case "Game_Solo":
                     Game_Solo.JustTouch(x, y);
-                    break;
-                case "LeaderBoard":
-                    LeaderBoard.JustTouch(x, y);
                     break;
                 case "NumberSelect":
                     NumberSelect.JustTouch(x, y);
@@ -56,14 +38,8 @@ namespace Sim
                 case "ModeSelect":
                     ModeSelect.MovedTouch(x1, y1, x2, y2);
                     break;
-                case "Authentication":
-                    Authentication.MovedTouch(x1, y1, x2, y2);
-                    break;
                 case "Game_Solo":
                     Game_Solo.MovedTouch(x1, y1, x2, y2);
-                    break;
-                case "LeaderBoard":
-                    LeaderBoard.MovedTouch(x1, y1, x2, y2);
                     break;
                 case "NumberSelect":
                     NumberSelect.MovedTouch(x1, y1, x2, y2);

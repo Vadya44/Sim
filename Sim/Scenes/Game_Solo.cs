@@ -1,7 +1,8 @@
 ﻿using System;
 using Android.Graphics;
 using System.Collections.Generic;
-using Android.Util;
+
+
 namespace Sim
 {
     public static class Game_Solo

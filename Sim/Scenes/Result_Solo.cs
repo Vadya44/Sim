@@ -1,31 +1,32 @@
-﻿using System;
-using Android.Graphics;
+﻿using Android.Graphics;
+
+
 namespace Sim
 {
-	public static class Result_Solo
-	{
-		private static bool _isPlWin;
-		// With clicks
-		public static void OnDraw(Canvas canvas)
-		{
-			if (_isPlWin)
-				Paints.DrawRes(canvas, true);
-			else Paints.DrawRes(canvas, false);
-				Paints.DrawButton(canvas, 135, 1000, 585, 1150);
-			Paints.DrawText(canvas, 138, 1100, "Main menu", 90, 60);
-			Paints.DrawButton(canvas, 135, 800, 585, 950);
-			Paints.DrawText(canvas, 148, 900, "New game", 90, 60);
-		}
-		public static void Show(bool isPlayerWin)
-		{
-			_isPlWin = isPlayerWin;
+    public static class Result_Solo
+    {
+        private static bool _isPlWin;
+        // With clicks
+        public static void OnDraw(Canvas canvas)
+        {
+            if (_isPlWin)
+                Paints.DrawRes(canvas, true);
+            else Paints.DrawRes(canvas, false);
+            Paints.DrawButton(canvas, 135, 1000, 585, 1150);
+            Paints.DrawText(canvas, 138, 1100, "Main menu", 90, 60);
+            Paints.DrawButton(canvas, 135, 800, 585, 950);
+            Paints.DrawText(canvas, 148, 900, "New game", 90, 60);
+        }
+        public static void Show(bool isPlayerWin)
+        {
+            _isPlWin = isPlayerWin;
             GameView.activeScene = "Result_Solo";
-			GameView.DrawEvent += OnDraw;
-		}
-		public static void Hide()
-		{
-			GameView.DrawEvent -= OnDraw;
-		}
+            GameView.DrawEvent += OnDraw;
+        }
+        public static void Hide()
+        {
+            GameView.DrawEvent -= OnDraw;
+        }
         public static void JustTouch(float x, float y)
         {
             if (x > 135 && x < 585 && y > 1000 && y < 1150)

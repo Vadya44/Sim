@@ -1,12 +1,11 @@
 ﻿using System;
-using Android.App;
 using Android.Graphics;
-using Android.OS;
+
 namespace Sim
 {
     public static class NumberSelect
     {
- 
+
         public static void OnDraw(Canvas canvas)
         {
             canvas.DrawColor(Paints.background.Color);
@@ -87,27 +86,19 @@ namespace Sim
         }
         public static bool Is6(float x, float y)
         {
-            if (120 > (Math.Sqrt((180 - x) * (180 - x) + (400 - y) * (400 - y))))
-                return true;
-            else return false;
+            return (120 > (Math.Sqrt((180 - x) * (180 - x) + (400 - y) * (400 - y))));
         }
         public static bool Is8(float x, float y)
         {
-            if (120 > (Math.Sqrt((540 - x) * (540 - x) + (400 - y) * (400 - y))))
-                return true;
-            else return false;
+            return (120 > (Math.Sqrt((540 - x) * (540 - x) + (400 - y) * (400 - y))));
         }
         public static bool Is10(float x, float y)
         {
-            if (120 > (Math.Sqrt((180 - x) * (180 - x) + (850 - y) * (850 - y))))
-                return true;
-            else return false;
+            return (120 > (Math.Sqrt((180 - x) * (180 - x) + (850 - y) * (850 - y))));
         }
         public static bool Is12(float x, float y)
         {
-            if (120 > (Math.Sqrt((540 - x) * (540 - x) + (850 - y) * (850 - y))))
-                return true;
-            else return false;
+            return (120 > (Math.Sqrt((540 - x) * (540 - x) + (850 - y) * (850 - y))));
         }
     }
 }

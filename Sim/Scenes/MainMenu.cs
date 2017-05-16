@@ -1,9 +1,7 @@
-﻿using System;
-using Android.Graphics;
+﻿using Android.Graphics;
 using Android.Animation;
-using Android.Content;
-using Android.Util;
-using Android.Views;
+
+
 namespace Sim
 {
     public class MainMenu
@@ -20,8 +18,8 @@ namespace Sim
             GameView.Instance.Invalidate();
             Paints.DrawButton(canvas, 150, 30, 570, 220); // Training
             Paints.DrawText(canvas, 235, 165, "Play", 140, 110);
-            Paints.DrawButton(canvas, 20, 1050, 275, 1150); // Top
-            Paints.DrawText(canvas, 90, 1120, "Top", 70, 40);
+            Paints.DrawButton(canvas, 20, 1050, 275, 1150); // About
+            Paints.DrawText(canvas, 50, 1120, "About", 70, 40);
             Paints.DrawButton(canvas, 445, 1050, 700, 1150); // Rules
             Paints.DrawText(canvas, 490, 1120, "Rules", 70, 40);
             ring1.Draw(canvas, animTime, 300);
@@ -67,7 +65,7 @@ namespace Sim
             if (x > 20 && x < 275 && y > 1050 && y < 1150)
             {
                 Hide();
-                LeaderBoard.Show();
+                About.Show();
             }
             if (x > 445 && x < 700 && y > 1050 && y < 1150)
             {
@@ -89,7 +87,7 @@ namespace Sim
                 x2 > 20 && x2 < 275 && y2 > 1050 && y2 < 1150)
             {
                 Hide();
-                LeaderBoard.Show();
+                About.Show();
             }
             else
             if (x1 > 445 && x1 < 700 && y1 > 1050 && y1 < 1150 &&
@@ -100,5 +98,5 @@ namespace Sim
             }
             else return;
         }
-        }
+    }
 }

@@ -57,10 +57,9 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scenes\Authentication.cs" />
+    <Compile Include="Scenes\About.cs" />
     <Compile Include="Scenes\Game_Solo.cs" />
     <Compile Include="Scenes\Intro.cs" />
-    <Compile Include="Scenes\LeaderBoard.cs" />
     <Compile Include="Scenes\MainMenu.cs" />
     <Compile Include="Scenes\ModeSelect.cs" />
     <Compile Include="Scenes\NumberSelect.cs" />

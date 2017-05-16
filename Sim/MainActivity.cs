@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.OS;
-using System.Threading;
-using Android.Graphics;
+
+
 namespace Sim
 {
     [Activity(Label = "Sim", MainLauncher = true, Icon = "@mipmap/icon",

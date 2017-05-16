@@ -5,7 +5,7 @@ namespace Sim
 {
     public class Intro
     {
-		// No clicks
+        // No clicks
         public static Timer aTimer = new Timer();
         static Bitmap _b;
         static Bitmap _bb;

@@ -1,16 +1,13 @@
 ﻿using System;
-
-using Android.Animation;
-using Android.Content;
 using Android.Graphics;
-using Android.Util;
-using Android.Views;
+
+
 namespace Sim
 {
     public static class Methods
     {
-        static Point _isRightnow;
-        static Point[] _arr;
+        private static Point _isRightnow;
+        private static Point[] _arr;
         private static bool Validate(int x, int y)
         {
             for (int i = 0; i < _arr.Length; i++)
