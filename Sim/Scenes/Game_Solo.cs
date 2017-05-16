@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Graphics;
 using System.Collections.Generic;
+using System.Timers;
 
 
 namespace Sim
@@ -8,6 +9,9 @@ namespace Sim
     public static class Game_Solo
     {
         // With clicks
+        private static bool _endGameFlag = false;
+        private static bool _blockFlag = false;
+        public static Timer aTimer = new Timer();
         private static int _number;
         public static Line nLine = new Line(new Point(0, 0, Color.AliceBlue),
             new Point(0, 0, Color.AliceBlue));
@@ -41,6 +45,12 @@ namespace Sim
                      GameView.Factor * _botArr[j].p2.Y, Paints.botSoloLine);
 
             }
+            if (_endGameFlag)
+            {
+                Paints.DrawButtonM(canvas, 100, 40, 620, 200);
+                Paints.DrawTextM(canvas, 140, 150, "Game over", 90, 70);
+                
+            }
         }
         public static void Show(bool isHard, int number)
         {
@@ -62,11 +72,13 @@ namespace Sim
             _botArr = null;
             _usedLines.Clear();
             GameView.DrawEvent -= OnDraw;
-        }
+            _endGameFlag = false;
+            _blockFlag = false;
+    }
         public static void JustTouch(float x, float y)
         {
             GameView.Instance.Invalidate();
-            if (x > 375 && x < 690 && y > 1050 && y < 1150)
+            if (x > 375 && x < 690 && y > 1050 && y < 1150 && !_blockFlag)
             {
                 Hide();
                 Result_Solo.Show(false);
@@ -76,42 +88,65 @@ namespace Sim
         {
             GameView.Instance.Invalidate();
             if (x1 > 375 && x1 < 690 && y1 > 1050 && y1 < 1150 &&
-                x2 > 375 && x2 < 690 && y2 > 1050 && y2 < 1150)
+                x2 > 375 && x2 < 690 && y2 > 1050 && y2 < 1150 && !_blockFlag)
             {
                 Hide();
                 Result_Solo.Show(false);
             }
             Line buff = Methods.DrawLine(x1, y1, x2, y2, _points);
-            if (buff != nLine && !_usedLines.Contains(buff))
+            if (buff != nLine && !_usedLines.Contains(buff) && !_blockFlag)
             {
                 _pllines.Add(buff);
                 _pllines.Add(ReverseLine(buff));
                 _plArr = _pllines.ToArray();
-                if (IsBotWin())
+                if (IsBotWin() && !_endGameFlag)
                 {
-                    Hide();
-                    Result_Solo.Show(false);
+                    _endGameFlag = true;
+                    _blockFlag = true;
+                    aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventFalse);
+                    aTimer.Interval = 3000;
+                    aTimer.Enabled = true;
                 }
-                if (IsPlayerWin())
+                if (IsPlayerWin() && !_endGameFlag)
                 {
-                    Hide();
-                    Result_Solo.Show(true);
+                    _endGameFlag = true;
+                    _blockFlag = true;
+                    aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventTrue);
+                    aTimer.Interval = 3000;
+                    aTimer.Enabled = true;
                 }
                 _usedLines.Add(buff);
                 _usedLines.Add(ReverseLine(buff));
                 TurnSender();
-                if (IsBotWin())
+                if (IsBotWin() && _endGameFlag)
                 {
-                    Hide();
-                    Result_Solo.Show(false);
+                    _endGameFlag = true;
+                    _blockFlag = true;
+                    aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventFalse);
+                    aTimer.Interval = 3000;
                 }
-                if (IsPlayerWin())
+                if (IsPlayerWin() && !_endGameFlag)
                 {
-                    Hide();
-                    Result_Solo.Show(true);
+                    _endGameFlag = true;
+                    _blockFlag = true;
+                    aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventTrue);
+                    aTimer.Interval = 3000;
+                    aTimer.Enabled = true;
                 }
             }
             GameView.Instance.Invalidate();
+        }
+        private static void OnTimedEventTrue(object source, ElapsedEventArgs e)
+        {
+            aTimer.Enabled = false;
+            Hide();
+            Result_Solo.Show(true);
+        }
+        private static void OnTimedEventFalse(object source, ElapsedEventArgs e)
+        {
+            aTimer.Enabled = false;
+            Hide();
+            Result_Solo.Show(false);
         }
         public static void TurnSender()
         {

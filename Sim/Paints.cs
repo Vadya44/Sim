@@ -57,6 +57,17 @@ namespace Sim
                 x2 * F, y2 * F,
                 10, 10, Paints.Circ);
         }
+        public static void DrawButtonM(Canvas canvas, int x1, int y1, int x2, int y2)
+        {
+            Paint p = new Paint();
+            p.Color = Color.Honeydew;
+            canvas.DrawRoundRect(x1 * F, y1 * F,
+                x2 * F, y2 * F,
+                10, 10, p);
+            canvas.DrawRoundRect(x1 * F, y1 * F,
+                x2 * F, y2 * F,
+                10, 10, Paints.Circ);
+        }
         public static void DrawCircle(Canvas canvas, int x, int y, int radius)
         {
             canvas.DrawCircle(x * F, y * F, radius * F, btns);
