@@ -7,6 +7,11 @@ namespace Sim
     {
         static Paints()
         {
+            // triangle showing 
+            triangle.Color = Color.Khaki;
+            triangle.StrokeWidth = 20 * F;
+
+
             //background and text color
             background.Color = Color.Rgb(132, 153, 177);
             text.Color = Color.Rgb(132, 153, 177);
@@ -39,6 +44,7 @@ namespace Sim
             botSoloLine.StrokeWidth = 720 / 60 * GameView.Factor;
             botSoloLine.SetStyle(Paint.Style.Stroke);
         }
+        public static Paint triangle = new Paint();
         public static float F = GameView.Factor;
         public static Paint background = new Paint();
         public static Paint text = new Paint();

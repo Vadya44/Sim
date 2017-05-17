@@ -9,6 +9,8 @@ namespace Sim
     public static class Game_Solo
     {
         // With clicks
+        private static string _winner;
+        private static int _ind1, _ind2, _ind3;
         private static bool _endGameFlag = false;
         private static bool _blockFlag = false;
         public static Timer aTimer = new Timer();
@@ -49,7 +51,24 @@ namespace Sim
             {
                 Paints.DrawButtonM(canvas, 100, 40, 620, 200);
                 Paints.DrawTextM(canvas, 140, 150, "Game over", 90, 70);
-                
+                if (_winner == "bot")
+                {
+                    for (int i = 0; i < _plArr.Length; i++)
+                        if (i == _ind1 || i == _ind2 || i == _ind3)
+                        canvas.DrawLine(_plArr[i].p1.X * GameView.Factor,
+                          _plArr[i].p1.Y * GameView.Factor,
+                         _plArr[i].p2.X * GameView.Factor,
+                         GameView.Factor * _plArr[i].p2.Y, Paints.triangle);
+                }
+                if (_winner == "player")
+                {
+                    for (int j = 0; j < _botArr.Length; j++)
+                        if (j == _ind1 || j == _ind2 || j == _ind3)
+                        canvas.DrawLine(_botArr[j].p1.X * GameView.Factor,
+                          _botArr[j].p1.Y * GameView.Factor,
+                         _botArr[j].p2.X * GameView.Factor,
+                         GameView.Factor * _botArr[j].p2.Y, Paints.triangle);
+                }
             }
         }
         public static void Show(bool isHard, int number)
@@ -254,7 +273,13 @@ namespace Sim
                             {
                                 if (IsTriangle(_plArr[i],
                                           _plArr[j], _plArr[k]))
+                                {
+                                    _winner = "bot";
+                                    _ind1 = i;
+                                    _ind2 = j;
+                                    _ind3 = k;
                                     return true;
+                                }
                             }
             return false;
         }
@@ -268,7 +293,13 @@ namespace Sim
                             {
                                 if (IsTriangle(_botArr[i],
                                           _botArr[j], _botArr[k]))
+                                {
+                                    _winner = "player";
+                                    _ind1 = i;
+                                    _ind2 = j;
+                                    _ind3 = k;
                                     return true;
+                                }
                             }
             return false;
         }
