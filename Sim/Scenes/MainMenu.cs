@@ -16,8 +16,12 @@ namespace Sim
         {
             canvas.DrawColor(Paints.background.Color);
             GameView.Instance.Invalidate();
-            Paints.DrawButton(canvas, 150, 30, 570, 220); // Training
-            Paints.DrawText(canvas, 235, 165, "Play", 140, 110);
+            Paints.DrawButton(canvas, 420, 60, 700, 200); // Solo
+            Paints.DrawText(canvas, 490, 155, "Solo", 70, 40);
+            Paints.DrawButton(canvas, 20, 60, 300, 200); // PvP
+            Paints.DrawText(canvas, 105, 155, "PvP", 70, 40);
+            //Paints.DrawButton(canvas, 150, 30, 570, 220); // Training
+            //Paints.DrawText(canvas, 235, 165, "Play", 140, 110);
             Paints.DrawButton(canvas, 20, 1050, 275, 1150); // About
             Paints.DrawText(canvas, 50, 1120, "About", 70, 40);
             Paints.DrawButton(canvas, 445, 1050, 700, 1150); // Rules
@@ -57,10 +61,15 @@ namespace Sim
         }
         public static void JustTouch(float x, float y)
         {
-            if (x > 150 && x < 570 && y > 30 && y < 220)
+            if (x > 380 && x < 700 && y > 60 && y < 200)
             {
                 Hide();
                 NumberSelect.Show();
+            }
+            if (x > 20 && x < 730 && y > 60 && y < 200)
+            {
+                Hide();
+                Multiplayer.Show();
             }
             if (x > 20 && x < 275 && y > 1050 && y < 1150)
             {
@@ -76,11 +85,17 @@ namespace Sim
         }
         public static void MovedTouch(float x1, float y1, float x2, float y2)
         {
-            if (x1 > 150 && x1 < 570 && y1 > 30 && y1 < 220 &&
-                x2 > 150 && x2 < 570 && y2 > 30 && y2 < 220)
+            if (x1 > 380 && x1 < 700 && y1 > 60 && y1 < 200 &&
+                x2 > 380 && x2 < 700 && y2 > 60 && y2 < 200)
             {
                 Hide();
                 NumberSelect.Show();
+            }
+            if (x1 > 20 && x1 < 300 && y1 > 60 && y1 < 200 &&
+                x2 > 20 && x2 < 300 && y2 > 60 && y2 < 200)
+            {
+                Hide();
+                Multiplayer.Show();
             }
             else
             if (x1 > 20 && x1 < 275 && y1 > 1050 && y1 < 1150 &&

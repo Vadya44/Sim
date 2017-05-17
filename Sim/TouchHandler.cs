@@ -6,6 +6,9 @@
         {
             switch (GameView.activeScene)
             {
+                case "Multiplayer":
+                    Multiplayer.JustTouch(x, y);
+                    break;
                 case "MainMenu":
                     MainMenu.JustTouch(x, y);
                     break;
@@ -32,6 +35,9 @@
         {
             switch (GameView.activeScene)
             {
+                case "Multiplayer":
+                    Multiplayer.MovedTouch(x1, y1, x2, y2);
+                    break;
                 case "MainMenu":
                     MainMenu.MovedTouch(x1, y1, x2, y2);
                     break;
