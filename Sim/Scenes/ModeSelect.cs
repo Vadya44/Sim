@@ -35,6 +35,8 @@ namespace Sim
         public static void Hide()
         {
             GameView.DrawEvent -= OnDraw;
+            _silver = null;
+            _golden = null;
         }
         public static void JustTouch(float x, float y)
         {

@@ -35,6 +35,9 @@ namespace Sim
         public static void Hide()
         {
             GameView.DrawEvent -= OnDraw;
+            _bb = null;
+            _b = null;
+            aTimer.Close();
         }
     }
 }
