@@ -30,24 +30,25 @@ namespace Sim
             Circle _circle = new Circle();
             _circle.Draw(canvas);
             Methods.DrawPoints(_points, canvas, _circle);
-            if (_firstArr != null && _secondArr != null)
-            {
+            if (_firstArr != null)
+            
                 for (int i = 0; i < _firstArr.Length; i++)
                     canvas.DrawLine(_firstArr[i].p1.X * GameView.Factor,
                       _firstArr[i].p1.Y * GameView.Factor,
                      _firstArr[i].p2.X * GameView.Factor,
                      GameView.Factor * _firstArr[i].p2.Y, Paints.plSoloLine);
+             if (_secondArr != null)
                 for (int j = 0; j < _secondArr.Length; j++)
                     canvas.DrawLine(_secondArr[j].p1.X * GameView.Factor,
                       _secondArr[j].p1.Y * GameView.Factor,
                      _secondArr[j].p2.X * GameView.Factor,
                      GameView.Factor * _secondArr[j].p2.Y, Paints.botSoloLine);
 
-            }
+            
             if (_endGameFlag)
             {
                 Paints.DrawButtonM(canvas, 100, 40, 620, 200);
-                if (_blueWinner)
+                if (_blueWinner && _firstArr != null)
                 {
                     for (int i = 0; i < _firstArr.Length; i++)
                         if (i == _ind1 || i == _ind2 || i == _ind3)
@@ -55,9 +56,9 @@ namespace Sim
                               _firstArr[i].p1.Y * GameView.Factor,
                              _firstArr[i].p2.X * GameView.Factor,
                              GameView.Factor * _firstArr[i].p2.Y, Paints.triangle);
-                    Paints.DrawTextM(canvas, 140, 150, "Blue win", 90, 70);
+                    Paints.DrawTextM(canvas, 180, 150, "Red win", 90, 70);
                 }
-                if (_redWinner)
+                if (_redWinner && _secondArr != null)
                 {
                     for (int j = 0; j < _secondArr.Length; j++)
                         if (j == _ind1 || j == _ind2 || j == _ind3)
@@ -65,7 +66,7 @@ namespace Sim
                               _secondArr[j].p1.Y * GameView.Factor,
                              _secondArr[j].p2.X * GameView.Factor,
                              GameView.Factor * _secondArr[j].p2.Y, Paints.triangle);
-                    Paints.DrawTextM(canvas, 140, 150, "Red win", 90, 70);
+                    Paints.DrawTextM(canvas, 180, 150, "Blue win", 90, 70);
                 }
             }
         }
@@ -84,12 +85,12 @@ namespace Sim
         }
         public static void Hide()
         {
+            GameView.DrawEvent -= OnDraw;
             _firstLines.Clear();
             _firstArr = null;
             _secondLines.Clear();
             _secondArr = null;
             _usedLines.Clear();
-            GameView.DrawEvent -= OnDraw;
             _endGameFlag = false;
             _blockFlag = false;
         }
@@ -109,6 +110,7 @@ namespace Sim
                     _firstLines.Add(ReverseLine(buff));
                     _firstArr = _firstLines.ToArray();
                     _bluesTurn = false;
+                    GameView.Instance.Invalidate();
                 }
                 else
                 {
@@ -116,9 +118,11 @@ namespace Sim
                     _secondLines.Add(ReverseLine(buff));
                     _secondArr = _secondLines.ToArray();
                     _bluesTurn = true;
+                    GameView.Instance.Invalidate();
                 };
                 if (IsSecondWin() && !_endGameFlag)
                 {
+                    GameView.Instance.Invalidate();
                     _endGameFlag = true;
                     _blockFlag = true;
                     aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventFalse);
@@ -127,6 +131,7 @@ namespace Sim
                 }
                 if (IsFirstWin() && !_endGameFlag)
                 {
+                    GameView.Instance.Invalidate();
                     _endGameFlag = true;
                     _blockFlag = true;
                     aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventTrue);
@@ -137,6 +142,7 @@ namespace Sim
                 _usedLines.Add(ReverseLine(buff));
                 if (IsSecondWin() && _endGameFlag)
                 {
+                    GameView.Instance.Invalidate();
                     _endGameFlag = true;
                     _blockFlag = true;
                     aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventFalse);
@@ -144,6 +150,7 @@ namespace Sim
                 }
                 if (IsFirstWin() && !_endGameFlag)
                 {
+                    GameView.Instance.Invalidate();
                     _endGameFlag = true;
                     _blockFlag = true;
                     aTimer.Elapsed += new ElapsedEventHandler(OnTimedEventTrue);

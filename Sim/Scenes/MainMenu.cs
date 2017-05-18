@@ -10,7 +10,7 @@ namespace Sim
 
         private static double animTime;
         private static Ring ring1, ring2;
-
+        private static ValueAnimator tanim = ValueAnimator.OfFloat(1, 2);
         // With clicks
         public static void OnDraw(Canvas canvas)
         {
@@ -20,14 +20,13 @@ namespace Sim
             Paints.DrawText(canvas, 490, 155, "Solo", 70, 40);
             Paints.DrawButton(canvas, 20, 60, 300, 200); // PvP
             Paints.DrawText(canvas, 105, 155, "PvP", 70, 40);
-            //Paints.DrawButton(canvas, 150, 30, 570, 220); // Training
-            //Paints.DrawText(canvas, 235, 165, "Play", 140, 110);
             Paints.DrawButton(canvas, 20, 1050, 275, 1150); // About
             Paints.DrawText(canvas, 50, 1120, "About", 70, 40);
             Paints.DrawButton(canvas, 445, 1050, 700, 1150); // Rules
             Paints.DrawText(canvas, 490, 1120, "Rules", 70, 40);
             ring1.Draw(canvas, animTime, 300);
             ring2.Draw(canvas, animTime, 210);
+            tanim.Start();
             GameView.Instance.Invalidate();
         }
         public static double AnimTime
@@ -57,6 +56,7 @@ namespace Sim
         }
         public static void Hide()
         {
+            tanim.Pause();
             GameView.DrawEvent -= OnDraw;
         }
         public static void JustTouch(float x, float y)
@@ -66,7 +66,7 @@ namespace Sim
                 Hide();
                 NumberSelect.Show();
             }
-            if (x > 20 && x < 730 && y > 60 && y < 200)
+            if (x > 20 && x < 300 && y > 60 && y < 200)
             {
                 Hide();
                 Multiplayer.Show();

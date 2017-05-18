@@ -33,28 +33,27 @@ namespace Sim
             Methods.DrawPoints(_points, canvas, _circle);
             Paints.DrawButton(canvas, 375, 1050, 690, 1150);
             Paints.DrawText(canvas, 385, 1120, "Concede", 75, 50);
-            if (_plArr != null && _botArr != null)
-            {
+            if (_plArr != null)
+            
                 for (int i = 0; i < _plArr.Length; i++)
                     canvas.DrawLine(_plArr[i].p1.X * GameView.Factor,
                       _plArr[i].p1.Y * GameView.Factor,
                      _plArr[i].p2.X * GameView.Factor,
                      GameView.Factor * _plArr[i].p2.Y, Paints.plSoloLine);
+            if (_botArr != null)
                 for (int j = 0; j < _botArr.Length; j++)
                     canvas.DrawLine(_botArr[j].p1.X * GameView.Factor,
                       _botArr[j].p1.Y * GameView.Factor,
                      _botArr[j].p2.X * GameView.Factor,
                      GameView.Factor * _botArr[j].p2.Y, Paints.botSoloLine);
-
-            }
             if (_endGameFlag)
             {
                 Paints.DrawButtonM(canvas, 100, 40, 620, 200);
                 Paints.DrawTextM(canvas, 140, 150, "Game over", 90, 70);
-                if (_winner == "bot")
+                if (_winner == "bot" )
                 {
                     for (int i = 0; i < _plArr.Length; i++)
-                        if (i == _ind1 || i == _ind2 || i == _ind3)
+                        if ((i == _ind1 || i == _ind2 || i == _ind3) && _plArr != null )
                         canvas.DrawLine(_plArr[i].p1.X * GameView.Factor,
                           _plArr[i].p1.Y * GameView.Factor,
                          _plArr[i].p2.X * GameView.Factor,
@@ -63,7 +62,7 @@ namespace Sim
                 if (_winner == "player")
                 {
                     for (int j = 0; j < _botArr.Length; j++)
-                        if (j == _ind1 || j == _ind2 || j == _ind3)
+                        if ((j == _ind1 || j == _ind2 || j == _ind3) && _botArr != null)
                         canvas.DrawLine(_botArr[j].p1.X * GameView.Factor,
                           _botArr[j].p1.Y * GameView.Factor,
                          _botArr[j].p2.X * GameView.Factor,
@@ -85,12 +84,12 @@ namespace Sim
         }
         public static void Hide()
         {
+            GameView.DrawEvent -= OnDraw;
             _pllines.Clear();
             _plArr = null;
             _botLines.Clear();
             _botArr = null;
             _usedLines.Clear();
-            GameView.DrawEvent -= OnDraw;
             _endGameFlag = false;
             _blockFlag = false;
     }
