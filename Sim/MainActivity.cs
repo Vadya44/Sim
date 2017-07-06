@@ -5,7 +5,7 @@ using Android.Views;
 
 namespace Sim
 {
-    [Activity(Label = "Sim", MainLauncher = true, Icon = "@mipmap/icon",
+    [Activity(Label = "The Sim", MainLauncher = true, Icon = "@drawable/icon",
     Theme = "@android:style/Theme.Black.NoTitleBar.Fullscreen")]
     public class MainActivity : Activity
     {

@@ -14,6 +14,7 @@ namespace Sim
         // With clicks
         public static void OnDraw(Canvas canvas)
         {
+            
             canvas.DrawColor(Paints.background.Color);
             GameView.Instance.Invalidate();
             Paints.DrawButton(canvas, 420, 60, 700, 200); // Solo
@@ -26,7 +27,6 @@ namespace Sim
             Paints.DrawText(canvas, 490, 1120, "Rules", 70, 40);
             ring1.Draw(canvas, animTime, 300);
             ring2.Draw(canvas, animTime, 210);
-            tanim.Start();
             GameView.Instance.Invalidate();
         }
         public static double AnimTime

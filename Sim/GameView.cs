@@ -17,7 +17,7 @@ namespace Sim
         public static float CenterX;
         public static float CenterY;
         public static float Factor = 1;
-        public static GameView Instance { get; private set; }
+        public static GameView Instance { get; set; }
         public delegate void DrawDelegate(Canvas canvas);
         public static event DrawDelegate DrawEvent;
         static GameView()
@@ -29,7 +29,7 @@ namespace Sim
             CenterY = Heigth / 2;
             Factor = Math.Max((float)Width / mainWidth, (float)Heigth / mainHidth);
         }
-        public GameView(Context context, IAttributeSet attrs) : base(context, attrs)
+        public GameView(Context context, IAttributeSet attrs) : base(context, attrs, 0)
         {
             Instance = this;
         }
@@ -63,9 +63,13 @@ namespace Sim
                 case MotionEventActions.Move:
                     isMoved = 1;
                     pointerIndex = ev.FindPointerIndex(_activePointerId);
-                    _posX = ev.GetX(pointerIndex);
-                    _posY = ev.GetY(pointerIndex);
-
+                    try {
+                        _posX = ev.GetX(pointerIndex);
+                        _posY = ev.GetY(pointerIndex);
+                    } catch (Exception e)
+                    {
+                        break;
+                    }
                     break;
                 case MotionEventActions.Up:
                     if (isMoved == 0)
